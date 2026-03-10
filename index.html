@@ -9,8 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Inter', sans-serif; }
-        .kanban-column { min-height: 400px; }
+        * { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .kanban-column { min-height: 300px; }
         .contact-card { transition: all 0.2s ease; }
         .contact-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
         .contact-card.dragging { opacity: 0.5; transform: rotate(3deg); }
@@ -29,6 +29,27 @@
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .kanban-column { min-width: 280px; width: 280px; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 0.5rem !important; }
+            .stats-grid > div { padding: 0.75rem !important; }
+            .stats-grid p:first-child { font-size: 1.25rem !important; }
+            .stats-grid p:last-child { font-size: 0.65rem !important; }
+            nav .flex { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            nav button { white-space: nowrap; padding: 0.75rem 0.5rem; font-size: 0.75rem; }
+            header .flex { flex-wrap: wrap; gap: 0.5rem; }
+            header h1 { font-size: 1rem; }
+            header p { display: none; }
+            header button { padding: 0.5rem 0.75rem; font-size: 0.75rem; }
+            header button i { display: none; }
+            .modal-content { width: 95vw !important; max-height: 85vh !important; margin: 1rem; }
+            table { font-size: 0.75rem; }
+            table th, table td { padding: 0.5rem 0.25rem !important; }
+            .contact-card { padding: 0.75rem !important; }
+            .contact-card p { font-size: 0.75rem !important; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -79,15 +100,17 @@
                             <p class="text-sm text-gray-500">Pipeline & Relationship Management</p>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3">
-                        <span id="user-email" class="text-sm text-gray-500"></span>
-                        <button onclick="openAddContactModal()" class="bg-[#1e3a5f] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#2d4a6f] transition flex items-center gap-2">
+                    <div class="flex items-center gap-2 md:gap-3 flex-wrap justify-end">
+                        <span id="user-email" class="text-xs md:text-sm text-gray-500 hidden md:inline"></span>
+                        <button onclick="openAddContactModal()" class="bg-[#1e3a5f] text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-[#2d4a6f] transition flex items-center gap-1 md:gap-2">
                             <i data-lucide="user-plus" class="w-4 h-4"></i>
-                            Add Contact
+                            <span class="hidden md:inline">Add Contact</span>
+                            <span class="md:hidden">Contact</span>
                         </button>
-                        <button onclick="openAddDealModal()" class="bg-[#f97316] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#ea580c] transition flex items-center gap-2">
+                        <button onclick="openAddDealModal()" class="bg-[#f97316] text-white px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-[#ea580c] transition flex items-center gap-1 md:gap-2">
                             <i data-lucide="briefcase" class="w-4 h-4"></i>
-                            Add Deal
+                            <span class="hidden md:inline">Add Deal</span>
+                            <span class="md:hidden">Deal</span>
                         </button>
                         <button onclick="handleLogout()" class="text-gray-500 hover:text-gray-700 p-2">
                             <i data-lucide="log-out" class="w-5 h-5"></i>
@@ -97,8 +120,8 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs -->
-        <nav class="bg-white border-b border-gray-200">
+        <!-- Navigation Tabs (Desktop) -->
+        <nav class="bg-white border-b border-gray-200 hidden md:block">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex gap-8">
                     <button onclick="switchTab('pipeline')" id="tab-pipeline" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900 tab-active">Pipeline</button>
@@ -110,11 +133,37 @@
                 </div>
             </div>
         </nav>
+        
+        <!-- Mobile Bottom Navigation -->
+        <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40 safe-area-inset-bottom">
+            <div class="grid grid-cols-5 gap-1 p-2">
+                <button onclick="switchTab('pipeline')" id="mob-tab-pipeline" class="flex flex-col items-center py-2 text-[#1e3a5f]">
+                    <i data-lucide="kanban" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-1">Pipeline</span>
+                </button>
+                <button onclick="switchTab('contacts')" id="mob-tab-contacts" class="flex flex-col items-center py-2 text-gray-500">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-1">Contacts</span>
+                </button>
+                <button onclick="switchTab('events')" id="mob-tab-events" class="flex flex-col items-center py-2 text-gray-500">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-1">Events</span>
+                </button>
+                <button onclick="switchTab('deals')" id="mob-tab-deals" class="flex flex-col items-center py-2 text-gray-500">
+                    <i data-lucide="briefcase" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-1">Deals</span>
+                </button>
+                <button onclick="switchTab('suggested')" id="mob-tab-suggested" class="flex flex-col items-center py-2 text-gray-500">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    <span class="text-[10px] mt-1">New</span>
+                </button>
+            </div>
+        </nav>
 
         <!-- Main Content -->
-        <main class="max-w-7xl mx-auto px-4 py-6">
+        <main class="max-w-7xl mx-auto px-4 py-6 pb-24 md:pb-6">
             <!-- Stats Bar -->
-            <div class="grid grid-cols-6 gap-4 mb-6">
+            <div class="stats-grid grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 mb-6">
                 <div class="bg-white rounded-lg border border-gray-200 p-4">
                     <p class="text-2xl font-bold text-gray-900" id="stat-total">0</p>
                     <p class="text-sm text-gray-500">Total Contacts</p>
@@ -246,15 +295,15 @@
     <!-- Contact Detail Modal -->
     <div id="contact-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0" onclick="closeContactModal()"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="p-6" id="contact-modal-content"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-[95vw] md:w-full max-w-2xl max-h-[85vh] overflow-y-auto">
+            <div class="p-4 md:p-6" id="contact-modal-content"></div>
         </div>
     </div>
 
     <!-- Add Contact Modal -->
     <div id="add-contact-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0" onclick="closeAddContactModal()"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-[95vw] md:w-full max-w-lg max-h-[85vh] overflow-y-auto">
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-semibold text-gray-900">Add New Contact</h2>
@@ -317,7 +366,7 @@
     <!-- Add Deal Modal -->
     <div id="add-deal-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0" onclick="closeAddDealModal()"></div>
-        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-[95vw] md:w-full max-w-lg max-h-[85vh] overflow-y-auto">
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-semibold text-gray-900">Add New Deal</h2>
@@ -913,9 +962,24 @@
         // Tab switching
         function switchTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('nav button').forEach(el => el.classList.remove('tab-active'));
+            document.querySelectorAll('nav button').forEach(el => {
+                el.classList.remove('tab-active');
+                el.classList.remove('text-[#1e3a5f]');
+                el.classList.add('text-gray-500', 'text-gray-600');
+            });
             document.getElementById(`view-${tabName}`).classList.remove('hidden');
-            document.getElementById(`tab-${tabName}`).classList.add('tab-active');
+            
+            // Desktop tab
+            const desktopTab = document.getElementById(`tab-${tabName}`);
+            if (desktopTab) desktopTab.classList.add('tab-active');
+            
+            // Mobile tab
+            const mobileTab = document.getElementById(`mob-tab-${tabName}`);
+            if (mobileTab) {
+                mobileTab.classList.remove('text-gray-500');
+                mobileTab.classList.add('text-[#1e3a5f]');
+            }
+            
             lucide.createIcons();
         }
 
