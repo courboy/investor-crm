@@ -366,7 +366,7 @@
         const SUPABASE_URL = 'https://nkftwhmwowbopyhfjigl.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rZnR3aG13b3dib3B5aGZqaWdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxMTc4NDYsImV4cCI6MjA4ODY5Mzg0Nn0.Eq6palv0gsGGpCFd5_OAb2wEtwtIwsCxwekG3o3IFXY';
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // Data
         let contacts = [];
@@ -388,7 +388,7 @@
 
         // Auth
         async function checkAuth() {
-            const { data: { session } } = await supabase.auth.getSession();
+            const { data: { session } } = await db.auth.getSession();
             if (session) {
                 showApp(session.user);
             } else {
@@ -406,7 +406,7 @@
             btn.disabled = true;
             
             try {
-                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+                const { data, error } = await db.auth.signInWithPassword({ email, password });
                 
                 if (error) {
                     showError(error.message);
@@ -437,7 +437,7 @@
         }
 
         async function handleLogout() {
-            await supabase.auth.signOut();
+            await db.auth.signOut();
             location.reload();
         }
 
@@ -453,9 +453,9 @@
         // Load data from Supabase
         async function loadData() {
             const [contactsRes, eventsRes, dealsRes] = await Promise.all([
-                supabase.from('contacts').select('*').order('name'),
-                supabase.from('events').select('*').order('suitability_score', { ascending: false }),
-                supabase.from('deals').select('*').order('created_at', { ascending: false })
+                db.from('contacts').select('*').order('name'),
+                db.from('events').select('*').order('suitability_score', { ascending: false }),
+                db.from('deals').select('*').order('created_at', { ascending: false })
             ]);
             
             contacts = (contactsRes.data || []).map(c => ({
@@ -573,7 +573,7 @@
             e.currentTarget.classList.remove('drag-over');
             const newStage = e.currentTarget.dataset.stage;
             
-            const { error } = await supabase.from('contacts').update({ stage: newStage, updated_at: new Date().toISOString() }).eq('id', draggedId);
+            const { error } = await db.from('contacts').update({ stage: newStage, updated_at: new Date().toISOString() }).eq('id', draggedId);
             if (!error) {
                 const c = contacts.find(c => c.id === draggedId);
                 if (c) c.stage = newStage;
@@ -654,7 +654,7 @@
 
         async function updateEventAttending(id, value) {
             const attending = value === 'yes' ? true : value === 'no' ? false : null;
-            await supabase.from('events').update({ attending }).eq('id', id);
+            await db.from('events').update({ attending }).eq('id', id);
             const e = events.find(e => e.id === id);
             if (e) e.attending = attending;
         }
@@ -706,14 +706,14 @@
         }
 
         async function addToResearch(id) {
-            await supabase.from('contacts').update({ stage: 'research' }).eq('id', id);
+            await db.from('contacts').update({ stage: 'research' }).eq('id', id);
             const c = contacts.find(c => c.id === id);
             if (c) c.stage = 'research';
             renderAll(); lucide.createIcons();
         }
 
         async function dismissSuggestion(id) {
-            await supabase.from('contacts').delete().eq('id', id);
+            await db.from('contacts').delete().eq('id', id);
             contacts = contacts.filter(c => c.id !== id);
             renderSuggestedContacts(); updateStats(); lucide.createIcons();
         }
@@ -814,7 +814,7 @@
         function closeContactModal() { document.getElementById('contact-modal').classList.add('hidden'); }
 
         async function updateContactStage(id, newStage) {
-            await supabase.from('contacts').update({ stage: newStage }).eq('id', id);
+            await db.from('contacts').update({ stage: newStage }).eq('id', id);
             const c = contacts.find(c => c.id === id);
             if (c) c.stage = newStage;
             renderAll(); closeContactModal(); lucide.createIcons();
@@ -828,7 +828,7 @@
                 const meetingNotes = c.meetingNotes || [];
                 meetingNotes.unshift({ date: today, type: 'contact', notes });
                 
-                await supabase.from('contacts').update({ last_contacted: today, meeting_notes: meetingNotes }).eq('id', id);
+                await db.from('contacts').update({ last_contacted: today, meeting_notes: meetingNotes }).eq('id', id);
                 c.lastContacted = today;
                 c.meetingNotes = meetingNotes;
                 renderAll();
@@ -846,7 +846,7 @@
             const form = e.target;
             const fd = new FormData(form);
             
-            const { data, error } = await supabase.from('contacts').insert({
+            const { data, error } = await db.from('contacts').insert({
                 name: fd.get('name'),
                 title: fd.get('title'),
                 company: fd.get('company'),
@@ -877,7 +877,7 @@
             const form = e.target;
             const fd = new FormData(form);
             
-            const { data, error } = await supabase.from('deals').insert({
+            const { data, error } = await db.from('deals').insert({
                 name: fd.get('name'),
                 type: fd.get('type') || 'Mixed-Use',
                 location: fd.get('location'),
