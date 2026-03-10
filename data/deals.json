@@ -1,0 +1,69 @@
+{
+  "deals": [
+    {
+      "id": "d001",
+      "name": "Seoul Office",
+      "type": "Office",
+      "location": "Seoul, South Korea",
+      "status": "Active",
+      "size": "",
+      "price": "",
+      "yield": "",
+      "description": "Stabilised income with motivated sellers",
+      "keyFeatures": ["Stabilised income", "Motivated seller"],
+      "targetInvestorProfile": {
+        "sectors": ["Office"],
+        "geography": ["Asia", "Korea"],
+        "minTicket": "",
+        "investorTypes": ["Family Office", "Investment Manager", "Sovereign Wealth / Pension"]
+      },
+      "sharedWith": ["c017"],
+      "interestedInvestors": [],
+      "notes": "Selling agent reached out directly - momentum on this deal",
+      "createdAt": "2026-03-10",
+      "updatedAt": "2026-03-10"
+    },
+    {
+      "id": "d002",
+      "name": "Sydney Industrial",
+      "type": "Industrial",
+      "location": "Sydney, Australia",
+      "status": "Active",
+      "size": "",
+      "price": "",
+      "yield": "",
+      "description": "Stabilised income with motivated sellers",
+      "keyFeatures": ["Stabilised income", "Motivated seller"],
+      "targetInvestorProfile": {
+        "sectors": ["Industrial", "Logistics"],
+        "geography": ["APAC", "Australia"],
+        "minTicket": "",
+        "investorTypes": ["Family Office", "Investment Manager", "Sovereign Wealth / Pension"]
+      },
+      "sharedWith": ["c017"],
+      "interestedInvestors": [],
+      "notes": "Part of APAC pipeline sent to HKL",
+      "createdAt": "2026-03-10",
+      "updatedAt": "2026-03-10"
+    }
+  ],
+  "dealTypes": [
+    "Office",
+    "Industrial",
+    "Logistics",
+    "Retail",
+    "Residential",
+    "Mixed-Use",
+    "Data Centre",
+    "Hospitality",
+    "Living"
+  ],
+  "dealStatuses": [
+    { "id": "pipeline", "name": "Pipeline", "color": "#94a3b8" },
+    { "id": "active", "name": "Active", "color": "#3b82f6" },
+    { "id": "shared", "name": "Shared with Investors", "color": "#8b5cf6" },
+    { "id": "negotiating", "name": "Negotiating", "color": "#f59e0b" },
+    { "id": "closed", "name": "Closed", "color": "#22c55e" },
+    { "id": "dead", "name": "Dead", "color": "#ef4444" }
+  ]
+}

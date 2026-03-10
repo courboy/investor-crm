@@ -1,0 +1,384 @@
+{
+  "metadata": {
+    "research_date": "2026-03-10",
+    "sources": [
+      "Prestel & Partner Family Office Forum Singapore 2025/2026",
+      "WMI Single Family Office Forum",
+      "WMI Partners Forum",
+      "Campden Wealth SGFOIF 2026",
+      "World Family Office Forum Asia 2026"
+    ],
+    "focus": "Family office principals, CIOs, and investment directors with real estate investment interest",
+    "total_contacts": 28
+  },
+  "contacts": [
+    {
+      "name": "Goh Wee Ping",
+      "title": "Chief Investment Officer / CEO",
+      "company": "Wee Hur Holdings / Wee Hur Capital Pte Ltd",
+      "type": "Family Office Principal",
+      "investment_focus": "Purpose-Built Student Accommodation (PBSA), real estate development, fund management",
+      "real_estate_relevance": "HIGHLY RELEVANT - Wee Hur is a Singapore-listed developer with significant real estate operations. Manages Wee Hur PBSA Master Trust focused on Australian student accommodation. Active in residential and commercial property development.",
+      "linkedin_url": "https://www.linkedin.com/in/goh-wee-ping/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Tuck Meng Yee",
+      "title": "Founder & Partner",
+      "company": "JRT Partners (Single Family Office)",
+      "type": "Family Office Principal/CIO",
+      "investment_focus": "Real estate, equities, debt, agriculture, hedge funds, private equity",
+      "real_estate_relevance": "HIGHLY RELEVANT - JRT Partners explicitly invests across real estate directly and through funds. Malaysian family office based in Singapore. Also advises other family offices on setup and investment due diligence.",
+      "linkedin_url": "https://sg.linkedin.com/in/tuck-meng-yee-712128",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Riady Gozali",
+      "title": "Managing Director",
+      "company": "Golden Vision Capital (Singapore) Pte Ltd",
+      "type": "Family Office Principal",
+      "investment_focus": "Real estate development, technology, healthcare, consumer, advanced engineering, impact investing",
+      "real_estate_relevance": "HIGHLY RELEVANT - Explicitly has interests in real estate development. Family background from Giti Tire Group. 25 years global experience, led large-scale expansion projects.",
+      "linkedin_url": "https://www.linkedin.com/in/riady-gozali/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Shreyas Slater Chityala",
+      "title": "Managing Partner / Principal",
+      "company": "Vedas Group (Chityala Family Office) / Elevate Innovation Partners",
+      "type": "Family Office Principal",
+      "investment_focus": "Fintech, enterprise software, real estate, public markets, blockchain",
+      "real_estate_relevance": "RELEVANT - Vedas Group explicitly includes real estate as a key investment sector alongside tech investments. Also involved with LightRay.ai helping family offices with alternative asset data intelligence.",
+      "linkedin_url": "https://www.linkedin.com/in/shreyas-slater-chityala-007/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Yogiraj Nadgauda",
+      "title": "Director / Head",
+      "company": "RDA Investments Singapore Pte Ltd (Thermax Single Family Office)",
+      "type": "Family Office Director",
+      "investment_focus": "Alternative investments, endowment-style approach with capital preservation focus",
+      "real_estate_relevance": "RELEVANT - Heads Singapore-based SFO for owners of Thermax Ltd (listed Indian engineering conglomerate). Oversees ex-India investments. One of India's well-structured family offices with global asset allocation.",
+      "linkedin_url": "https://www.linkedin.com/in/yogiraj-a-nadgauda/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025, World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Poman Lo",
+      "title": "Vice Chairman & Managing Director",
+      "company": "Century City International Holdings / Regal Hotels International Holdings",
+      "type": "Family Business Principal",
+      "investment_focus": "Hotels, real estate development, property investment",
+      "real_estate_relevance": "HIGHLY RELEVANT - Century City and Regal Hotels are major Hong Kong property/hotel groups. Deep real estate and hospitality expertise. Also founder of Century Innovative Technology.",
+      "linkedin_url": "https://www.linkedin.com/in/poman-lo-13205353/",
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Mahesh Harilela",
+      "title": "Family Council Convenor / CEO",
+      "company": "The Harilela Group / Harilela Hotels Ltd",
+      "type": "Family Business Principal",
+      "investment_focus": "Hotels, real estate, hospitality",
+      "real_estate_relevance": "HIGHLY RELEVANT - The Harilela Group is one of Hong Kong's most prominent hotel/property families since 1959. Owns and operates ~19 hotels. Deep real estate development and management expertise.",
+      "linkedin_url": "https://hk.linkedin.com/in/maheshharilela",
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Jane Leong Jheng-Yi",
+      "title": "Director of Group Strategy and Operations",
+      "company": "Mah Sing Group Berhad",
+      "type": "Family Business Next-Gen",
+      "investment_focus": "Property development, ESG, sustainability in real estate",
+      "real_estate_relevance": "HIGHLY RELEVANT - Mah Sing is one of Malaysia's largest property developers. Jane is daughter of Tan Sri Dato' Sri Leong Hoy Kum (Group MD/CEO). Oversees strategy, operations, and sustainability initiatives.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Dr. Maren Schweizer",
+      "title": "Founding CEO",
+      "company": "Schweizer World Group (6th Generation Family Office)",
+      "type": "Family Office Principal",
+      "investment_focus": "Electronics, advanced manufacturing, mobility, clean energy, eCommerce, health-tech, digital platforms",
+      "real_estate_relevance": "MODERATE - 175-year-old family business managing 34 portfolio companies. Based in Singapore. While tech-focused, multi-generational wealth typically includes real estate. Strong governance and board experience.",
+      "linkedin_url": "https://www.linkedin.com/in/dr-schweizer/",
+      "contact_info": null,
+      "source": "WMI Single Family Office Forum / Partners Forum",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Frederick (Chavalit) Tsao",
+      "title": "Family Business Steward & Chairman",
+      "company": "TPC (Tsao Pao Chee) Group / IMC Pan Asia Alliance Group",
+      "type": "Family Business Principal",
+      "investment_focus": "Shipping, real estate, philosophy-driven business",
+      "real_estate_relevance": "RELEVANT - Multi-generational Singapore family with shipping origins. IMC Group has diversified interests including real estate. Founder of FBN Asia, deep family business network connections.",
+      "linkedin_url": "https://www.linkedin.com/in/chavalit-frederick-tsao-23311619b/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Tom Road",
+      "title": "Director / Deputy Head",
+      "company": "Barclays Private Bank Singapore",
+      "type": "Private Bank - Real Estate Specialist",
+      "investment_focus": "UHNW/Global Family Office coverage, real estate M&A, digital assets, private markets",
+      "real_estate_relevance": "HIGHLY RELEVANT AS INTRODUCER - Former Linklaters M&A lawyer specializing in real estate clients (SWFs, listed property companies, private investors). Deep network of real estate industry players in UK and beyond. Can help with acquisition and financing.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "HIGH"
+    },
+    {
+      "name": "Catherine Shiang",
+      "title": "Managing Director",
+      "company": "Asia Capital Advisor, Ltd (Single Family Office)",
+      "type": "Family Office Principal",
+      "investment_focus": "Private equity, M&A, hedge funds, venture capital, real estate",
+      "real_estate_relevance": "RELEVANT - Single family office with offices in Hong Kong, Singapore, Miami, London. Has participated in real estate transactions including with Equinox Group (Nigerian resource and real estate).",
+      "linkedin_url": "https://www.linkedin.com/in/cshiang/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Jonathan Fein",
+      "title": "Director - Asia Pacific",
+      "company": "Treïs (Family Investment Group)",
+      "type": "Family Office Investment Director",
+      "investment_focus": "Long-term returns, responsible investment, ESG, direct investments (EUR 10-30M)",
+      "real_estate_relevance": "RELEVANT - 120-year family history with responsible investment focus. Direct investment capability EUR 10-30M. Based in Singapore covering APAC. Looking for investments with positive impact.",
+      "linkedin_url": "https://www.linkedin.com/in/jonathan-fein-52813221/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Richard Tao",
+      "title": "Chairman",
+      "company": "New Heritage Investments Limited",
+      "type": "Family Office Principal",
+      "investment_focus": "Pharmaceuticals, biotech, international VC funds, direct investments",
+      "real_estate_relevance": "MODERATE - Hong Kong-based family investment company. While pharma-focused, family business groups often hold real estate. Worth exploring.",
+      "linkedin_url": "https://www.linkedin.com/in/rtao2015/",
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "LOW"
+    },
+    {
+      "name": "Sophie Khau",
+      "title": "Managing Partner / Board Member",
+      "company": "Mastery Holdings (Single Family Office) / L'Excellence Diamond",
+      "type": "Family Office Principal",
+      "investment_focus": "Entrepreneurs, fund managers, health as asset class",
+      "real_estate_relevance": "MODERATE - 3rd generation family business origin (diamond). SFO empowers entrepreneurs and fund managers. Commented on Singapore family office regulations including SGX requirements.",
+      "linkedin_url": "https://www.linkedin.com/in/sophie-khau-5292756/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025, World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Eric SayWei Neo",
+      "title": "Executive Board Director",
+      "company": "Medway Investments (Single Family Office)",
+      "type": "Family Office Director",
+      "investment_focus": "Capital markets, fintech, wealth management, multi-asset portfolios (>$300M)",
+      "real_estate_relevance": "MODERATE - SFO with 'Crafting Legacies That Prosperity Ensures' purpose. Managed portfolios exceeding $300M. Strong capital markets and institutional background.",
+      "linkedin_url": "https://www.linkedin.com/in/eric-saywei-neo/",
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025, World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "ToonLee Ng",
+      "title": "Owner / Director",
+      "company": "Venture Sense Pte Ltd (Single Family Office)",
+      "type": "Family Office Principal",
+      "investment_focus": "Cross-border ventures, biomedical, agriculture, impact investing",
+      "real_estate_relevance": "RELEVANT - Family background in real estate (father ran real estate company developing low-cost housing in Malaysia). Multi-generational wealth from business family.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "David Werdiger",
+      "title": "Managing Director / 2nd Gen Family Member & FO Principal",
+      "company": "Nathanson Pearson",
+      "type": "Family Office Principal & Advisor",
+      "investment_focus": "Family enterprise transitions, succession, wealth transition",
+      "real_estate_relevance": "MODERATE - 2nd generation family office principal. Bestselling author on wealth transition. Good connector to other family offices considering intergenerational wealth transfer which often includes real estate.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "LOW"
+    },
+    {
+      "name": "Joe Qiao",
+      "title": "Chief Investment Officer",
+      "company": "Globaltec Capital",
+      "type": "Family Office CIO",
+      "investment_focus": "Not specified - CIO role",
+      "real_estate_relevance": "MODERATE - CIO level means significant investment decision-making authority. Worth exploring portfolio composition.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Nydia Zhang",
+      "title": "Investment Director",
+      "company": "Ferretto Capital",
+      "type": "Family Office Investment Director",
+      "investment_focus": "Not specified",
+      "real_estate_relevance": "MODERATE - Investment Director role suggests direct deal involvement. Worth exploring.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Dr. Thomas Dobmeyer",
+      "title": "Partner / Entrepreneur & Investor",
+      "company": "ekwithree GmbH (Private Family Office)",
+      "type": "Family Office Principal",
+      "investment_focus": "Technology-driven B2B service providers, growth investments",
+      "real_estate_relevance": "MODERATE - Post-liquidity investor (sold PharmaLex for unicorn valuation). Significant capital to deploy. 'Life after liquidity' perspective.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "LOW"
+    },
+    {
+      "name": "Vishal Harishchandra Kewalramani",
+      "title": "Founder, Chairman & CEO",
+      "company": "The Valkin Group (Single Family Office)",
+      "type": "Family Office Principal",
+      "investment_focus": "Private equity, venture capital, international trade, e-commerce, AI",
+      "real_estate_relevance": "RELEVANT - Over 20 years experience in fashion, media, real estate, and private equity. Multiple company exits. Broad investment mandate.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Jonathan Green",
+      "title": "Investment Director",
+      "company": "Twynam",
+      "type": "Family Office Investment Director",
+      "investment_focus": "Sustainability, food systems, climate, technology",
+      "real_estate_relevance": "MODERATE - Investment Director with fund management experience. Focus on climate and sustainability could align with sustainable real estate development.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "LOW"
+    },
+    {
+      "name": "Guneet Banga",
+      "title": "Co-Founder & Managing Partner",
+      "company": "Parinama Group",
+      "type": "Family Office Partner",
+      "investment_focus": "Not specified",
+      "real_estate_relevance": "LOW - Limited information available. Worth light research.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "LOW"
+    },
+    {
+      "name": "Zann Kwann",
+      "title": "Managing Partner & CIO",
+      "company": "Revo Digital Family Office",
+      "type": "Family Office CIO",
+      "investment_focus": "Digital investments",
+      "real_estate_relevance": "LOW - Digital focus but CIO role has broad mandate. PropTech angle possible.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "LOW"
+    },
+    {
+      "name": "Shiraz Poonevala",
+      "title": "Director of Investments",
+      "company": "GP Group",
+      "type": "Family Office Investment Director",
+      "investment_focus": "Not specified",
+      "real_estate_relevance": "MODERATE - Investment Director role. GP Group may have diversified holdings.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Dato' Loy Teik Ngan",
+      "title": "Chairman",
+      "company": "Taylor's Education Group",
+      "type": "Family Business Principal",
+      "investment_focus": "Education",
+      "real_estate_relevance": "MODERATE - Major Malaysian education group. Education institutions often own significant real estate (campuses, student housing). Could be interested in PBSA or education-adjacent property.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "World Family Office Forum Asia",
+      "priority": "MEDIUM"
+    },
+    {
+      "name": "Sarah Aubrey",
+      "title": "Director of Investments",
+      "company": "Private Family Office (undisclosed)",
+      "type": "Family Office Investment Director",
+      "investment_focus": "Alternative investments",
+      "real_estate_relevance": "RELEVANT - Director of Investments focused on alternatives, which typically includes real estate. Worth identifying the family office.",
+      "linkedin_url": null,
+      "contact_info": null,
+      "source": "Prestel & Partner Singapore 2025",
+      "priority": "MEDIUM"
+    }
+  ],
+  "summary": {
+    "high_priority": 7,
+    "medium_priority": 14,
+    "low_priority": 7,
+    "most_relevant_for_real_estate": [
+      "Goh Wee Ping (Wee Hur) - Active real estate developer and PBSA fund manager",
+      "Tuck Meng Yee (JRT Partners) - SFO explicitly investing in real estate",
+      "Riady Gozali (Golden Vision Capital) - Real estate development in investment focus",
+      "Poman Lo (Century City) - Major HK hotel/property group",
+      "Mahesh Harilela (Harilela Group) - Major HK hotel/property family",
+      "Jane Leong (Mah Sing) - Top Malaysian property developer family",
+      "Tom Road (Barclays) - Deep real estate network, can make introductions"
+    ],
+    "upcoming_events": [
+      {
+        "event": "Prestel & Partner Family Office Forum Singapore",
+        "dates": "April 21-22, 2026",
+        "venue": "Raffles Singapore"
+      },
+      {
+        "event": "Campden Wealth Asia-Pacific Family Office & Investment Forum",
+        "dates": "September 9-10, 2026",
+        "venue": "Singapore (TBC)"
+      },
+      {
+        "event": "World Family Office Forum Asia",
+        "dates": "October 15-16, 2026",
+        "venue": "The Ritz Carlton, Hong Kong"
+      }
+    ],
+    "notes": "Most contacts are Singapore or Hong Kong based. Prestel & Partner forum allows wealth-owners to attend free (>$150M AUM threshold). Campden Wealth requires qualification process. World Family Office Forum is invitation-only with board approval."
+  }
+}

@@ -1,0 +1,404 @@
+{
+  "research_date": "2026-03-10",
+  "contacts": [
+    {
+      "name": "Jimmy Gu",
+      "linkedin_url": "https://www.linkedin.com/in/jimmy-gu-48618942/",
+      "current_title": "Deputy Managing Director / Head of Capital Markets & Investment Services, China",
+      "company": "Colliers International",
+      "role_description": "Leads capital markets and investment services for Colliers in China. Provides clients with capital markets solutions including financial analysis, regulatory compliance, and innovative financial instruments.",
+      "investment_focus": [
+        "Commercial real estate transactions in China",
+        "Office sector investments",
+        "Cross-border capital markets",
+        "Financial structuring for real estate deals"
+      ],
+      "recent_news": [
+        "Active speaker at Guandian Hong Kong Forum 2024",
+        "Involved in ESG initiatives representing Taiwan at Asia Property Awards"
+      ],
+      "contact_info": {
+        "company_website": "https://www.colliers.com.cn/en-cn/experts/jimmy-gu"
+      },
+      "data_quality": "verified"
+    },
+    {
+      "name": "Selena Shi",
+      "linkedin_url": "https://www.linkedin.com/in/selena-shi-cfa-a8b18321/",
+      "current_title": "Managing Director",
+      "company": "LaSalle Investment Management",
+      "role_description": "Managing Director focused on real estate investment in China. CFA charterholder since 2011.",
+      "investment_focus": [
+        "Real estate investment in China",
+        "Multifamily/residential assets",
+        "PRC real estate laws expertise"
+      ],
+      "recent_news": [
+        "Featured on Mingtiandi discussing multifamily investment prospects in China (Feb 2024)",
+        "Speaking at industry events on China real estate opportunities"
+      ],
+      "contact_info": {
+        "email_domain": "lasalle.com"
+      },
+      "education": "Master's degree in International Laws, University of International Business and Economics",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Stuart Grant",
+      "linkedin_url": "https://www.linkedin.com/in/stuart-grant-6905a96a/",
+      "current_title": "CEO, Westbund Central / Board Member",
+      "company": "Hongkong Land",
+      "role_description": "Leading Hongkong Land's $8 billion Westbund Central commercial project in Shanghai (1.1 million sqm development)",
+      "investment_focus": [
+        "Large-scale commercial real estate development",
+        "Mixed-use developments",
+        "Innovation ecosystems and research clusters",
+        "Asia Pacific real estate investments"
+      ],
+      "recent_news": [
+        "Appointed CEO of Westbund Central Shanghai project (March 2025)",
+        "Previously launched Singapore's largest commercial real estate private fund for Hongkong Land"
+      ],
+      "previous_experience": [
+        "Senior Managing Director, Blackstone Asian Real Estate (18 years) - oversaw $20B+ investments across Greater China, India, Singapore, Japan, Korea, Australia",
+        "Chairman and CEO, Brookfield's Advanced Research Clusters"
+      ],
+      "contact_info": {
+        "company": "Hongkong Land Limited"
+      },
+      "data_quality": "verified"
+    },
+    {
+      "name": "Vince Baudille",
+      "linkedin_url": "https://www.linkedin.com/in/vince-baudille-9777bb145/",
+      "current_title": "Global Co-Head of Real Estate / Head of Real Estate Australia/Asia",
+      "company": "Bird & Bird LLP",
+      "role_description": "Senior partner with 25+ years legal experience, leading global real estate practice. Acts on cross-border real estate projects across ASEAN.",
+      "investment_focus": [
+        "Cross-border real estate transactions",
+        "ASEAN real estate projects",
+        "Legal advisory for real estate investors",
+        "Fund formation and structuring"
+      ],
+      "recent_news": [
+        "Appointed Global Co-Head of Real Estate (April 2020)",
+        "Expanding Bird & Bird's Australian market presence"
+      ],
+      "contact_info": {
+        "company_website": "https://www.twobirds.com/en/people/v/vince-baudille",
+        "location": "Sydney, Australia"
+      },
+      "note": "Legal advisor rather than direct investor - valuable for deal structuring",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Carman Chan",
+      "linkedin_url": "https://www.linkedin.com/in/carmanchan/",
+      "current_title": "Founder / LP / Former VC Partner",
+      "company": "Click Ventures (Single Family Office)",
+      "role_description": "Transitioned Click Ventures from a VC fund (ranked world's top-performing by Preqin 2019-2021) into her own single family office managing existing investments and allocating to emerging VC managers.",
+      "investment_focus": [
+        "Emerging VC fund managers (LP investments)",
+        "AI and technology startups",
+        "Impact investing",
+        "Early-stage venture capital"
+      ],
+      "recent_news": [
+        "Selected by World Economic Forum as one of 17 innovative funds (2022)",
+        "Speaker at Milken Institute Global Investors Symposium HK 2025",
+        "Featured in AsianInvestor discussing AI investments via emerging managers (June 2024)"
+      ],
+      "contact_info": {
+        "company": "Click Ventures"
+      },
+      "achievements": "Featured in Harvard Business Review; spoke in 20+ countries; first startup Click Limited acquired by FastEastone (4904.TW)",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Josephine Yip",
+      "linkedin_url": "https://www.linkedin.com/in/josephine-yip-68006a20/",
+      "current_title": "Managing Director, Real Estate, Asia Pacific / Vice President, Investments & Asset Management",
+      "company": "CDPQ / Ivanhoé Cambridge",
+      "role_description": "Leads execution of real estate investment strategies for CDPQ in Asia Pacific. 20+ years experience in real estate covering capital raising, investments, asset management and portfolio management.",
+      "investment_focus": [
+        "Asia Pacific real estate investments",
+        "Institutional real estate",
+        "Core and value-add strategies",
+        "Portfolio management"
+      ],
+      "recent_news": [
+        "Speaker at APREA Leaders' Congress 2025 (Singapore)",
+        "Hired by Ivanhoé Cambridge in September 2021 from Alpha Investment Partners/GIC"
+      ],
+      "previous_experience": [
+        "Alpha Investment Partners",
+        "GIC"
+      ],
+      "contact_info": {
+        "location": "Singapore"
+      },
+      "education": "National University of Singapore",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Samuel Luk",
+      "linkedin_url": "https://www.linkedin.com/in/samuel-luk/",
+      "current_title": "Investment Director",
+      "company": "Park Capital Group",
+      "role_description": "Investment Director with experience in real estate investments, based in Hong Kong.",
+      "investment_focus": [
+        "Real estate investment",
+        "Hong Kong family office investments"
+      ],
+      "recent_news": [],
+      "contact_info": {
+        "location": "Hong Kong"
+      },
+      "education": "University of Nottingham",
+      "data_quality": "limited - basic profile only"
+    },
+    {
+      "name": "Johnny Chio",
+      "linkedin_url": "https://www.linkedin.com/in/johnnychio/",
+      "current_title": "Director, Real Estate Investments, Asia",
+      "company": "CPP Investments (CPPIB)",
+      "role_description": "Director responsible for driving real estate investment strategies in Asia for CPP Investments (Canada Pension Plan Investment Board).",
+      "investment_focus": [
+        "Asian real estate investments",
+        "Institutional real estate",
+        "Retail and commercial properties"
+      ],
+      "recent_news": [
+        "Deputy Chair of ANREV Membership Committee",
+        "Member of FondsForum AsiaConference Advisory Board",
+        "Attended Pavilion Damansara Heights events (2026)"
+      ],
+      "contact_info": {
+        "email_domain": "cppib.com",
+        "location": "Hong Kong"
+      },
+      "education": "BS, NYU Stern School of Business",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Jonathan Umali",
+      "linkedin_url": "https://www.linkedin.com/in/jonathan-umali-a25a973/",
+      "current_title": "Director, Investment & Asset Management / Investment Committee Member",
+      "company": "ARCH Capital Management",
+      "role_description": "29 years experience in investment and asset management in Asia. Serves on firm's Investment Committee. Played key role in expanding investment footprint across Japan, Southeast Asia, Australia, and Greater China.",
+      "investment_focus": [
+        "Opportunistic real estate",
+        "Value-add strategies",
+        "Core/core-plus investments",
+        "Pan-Asia real estate"
+      ],
+      "recent_news": [
+        "Speaker at Mingtiandi events (2025)",
+        "Joined ARCH Capital in 2006"
+      ],
+      "previous_experience": [
+        "Senior positions at Ayala Land (Philippines)",
+        "International postings in Singapore and San Francisco"
+      ],
+      "contact_info": {
+        "company_website": "https://archcapital.net/leadership-team/"
+      },
+      "education": "MBA, Asian Institute of Management - Columbia Business School Program; BS Industrial Engineering/Chemical Engineering",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Sophia Wang",
+      "linkedin_url": "https://www.linkedin.com/in/sofiawang/",
+      "current_title": "Unknown",
+      "company": "Single Family Office (unconfirmed)",
+      "role_description": "Reported to be involved in real estate investments in Asia through a single family office.",
+      "investment_focus": [
+        "Real estate in Asia (unconfirmed)"
+      ],
+      "recent_news": [],
+      "contact_info": {},
+      "data_quality": "unverified - limited public information available"
+    },
+    {
+      "name": "Richard Law",
+      "linkedin_url": "https://www.linkedin.com/in/richard-law-5319aa76/",
+      "current_title": "Regional CEO / Head of Real Estate Asia Pacific",
+      "company": "JD Property (JD.com subsidiary)",
+      "role_description": "Drives strategic growth and identifies investment opportunities within JD Property's $15 billion portfolio across Asia Pacific.",
+      "investment_focus": [
+        "Logistics and industrial real estate",
+        "Supply chain infrastructure",
+        "Data centers",
+        "Manufacturing parks"
+      ],
+      "recent_news": [
+        "JD Property acquired Brisbane industrial estate from ESR JV for $153M (April 2025)",
+        "Acquired LiFung Centre in Hong Kong for HK$1.8B from M&G Real Estate (Sept 2024)",
+        "Partnership with Hillhouse on $255M Singapore industrial acquisition (Oct 2024)"
+      ],
+      "contact_info": {
+        "company": "JD Property"
+      },
+      "note": "JD Property backed by Warburg Pincus",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Ellen Ng",
+      "linkedin_url": null,
+      "profile_url": "https://warburgpincus.com/team/ellen-ng/",
+      "current_title": "Managing Director / Co-Head of Asia Real Estate",
+      "company": "Warburg Pincus",
+      "role_description": "Leads real estate franchise in China and investments across Asia. Member of Executive Management Group. Joined Warburg Pincus in 2005.",
+      "investment_focus": [
+        "China real estate",
+        "Asia real estate investments",
+        "Logistics and supply chain",
+        "New economy real estate"
+      ],
+      "recent_news": [
+        "Named next-generation leader for Asia region (Dec 2023)",
+        "Co-Head alongside Takashi Murata (Head of Japan)",
+        "Speaker at Mingtiandi Hong Kong Focus Forum (June 2023)"
+      ],
+      "previous_experience": [
+        "Director, Athena Investment",
+        "ARA Asset Management",
+        "KaiLong",
+        "Merrill Lynch"
+      ],
+      "contact_info": {
+        "email_domain": "warburgpincus.com",
+        "company_website": "https://warburgpincus.com/team/ellen-ng/"
+      },
+      "education": "BS, Wharton",
+      "data_quality": "verified"
+    },
+    {
+      "name": "John Saunders",
+      "linkedin_url": "https://www.linkedin.com/in/john-saunders-628079b9/",
+      "current_title": "Group Chief Investment Officer",
+      "company": "Link REIT",
+      "role_description": "Group CIO for Asia's largest REIT. Based in Hong Kong for over 30 years with deep property industry experience and strong investment track record spanning APAC.",
+      "investment_focus": [
+        "Asia Pacific real estate",
+        "Value-add strategies",
+        "Retail and commercial properties",
+        "REIT investments"
+      ],
+      "recent_news": [
+        "Appointed Group CIO of Link REIT (January 2024)",
+        "Previously served as sole Portfolio Manager for BlackRock's Asia Value Add Fund Series"
+      ],
+      "previous_experience": [
+        "BlackRock - Head of Asia Pacific Real Estate & Global Head of Real Estate Client Business",
+        "Member of BlackRock Real Estate Global Executive Committee and Investment Committee"
+      ],
+      "contact_info": {
+        "company_website": "https://www.linkreit.com/en/about-us/leadership/john-saunders/"
+      },
+      "data_quality": "verified"
+    },
+    {
+      "name": "Pak Man Yuen",
+      "linkedin_url": null,
+      "profile_url": "https://www.blackstone.com/people/pak-man-yuen/",
+      "current_title": "Managing Director, Real Estate",
+      "company": "Blackstone",
+      "role_description": "Managing Director in Real Estate group based in Hong Kong. Since joining in 2013, involved in major Blackstone investments across Asia including SCPG, Tysan Holdings, Taubman Asia, GE Australia portfolio.",
+      "investment_focus": [
+        "Asia real estate acquisitions",
+        "Self-storage (Storefriendly JV)",
+        "Retail and commercial",
+        "Opportunistic investments"
+      ],
+      "recent_news": [
+        "Blackstone Storefriendly JV opened Hong Kong shops (April 2023)",
+        "Speaker at MIPIM Asia",
+        "Board member, Tysan Holdings"
+      ],
+      "previous_experience": [
+        "Morgan Stanley Real Estate Investing (acquisitions team)"
+      ],
+      "contact_info": {
+        "company_website": "https://www.blackstone.com/people/pak-man-yuen/"
+      },
+      "education": "BS Computer Science & MS Management Science & Engineering, Stanford University (distinction, Phi Beta Kappa, Terman Scholar)",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Suchad Chiaranussati",
+      "linkedin_url": "https://www.linkedin.com/in/suchad-chiaranussati-61b84223b/",
+      "current_title": "Chairman & Founder",
+      "company": "SC Capital Partners",
+      "role_description": "Founder and Chairman of SC Capital Partners, a leading Asia-focused real estate private equity firm. Also manages two listed REITs: Japan Hotel REIT (largest hospitality REIT in Japan) and TPRIME (commercial REIT in Thailand).",
+      "investment_focus": [
+        "Pan-Asia real estate private equity",
+        "Hospitality investments (Japan Hotel REIT)",
+        "Commercial real estate (TPRIME Thailand)",
+        "Opportunistic and value-add strategies"
+      ],
+      "recent_news": [
+        "Speaker at SEAHIS 2025",
+        "Active speaker at Mingtiandi events"
+      ],
+      "previous_experience": [
+        "Advisor to Central Bank of Thailand (1998) - assisted in restructuring public and private sectors"
+      ],
+      "contact_info": {
+        "company_website": "https://www.sccpasia.com/about-us/our-team/"
+      },
+      "education": "Honors Degree in Economics, London School of Economics; MS Management Science, Imperial College London",
+      "data_quality": "verified"
+    },
+    {
+      "name": "Caroline Dellasega",
+      "linkedin_url": "https://www.linkedin.com/in/caroline-dellasega/",
+      "current_title": "Vice President, Investor Relations",
+      "company": "AM Alpha",
+      "role_description": "Responsible for managing and expanding relationships with investment partners for AM Alpha, a Munich-based privately owned real estate family office. ~20 years experience in global real estate.",
+      "investment_focus": [
+        "Prime real estate investments",
+        "Global real estate (Europe, Singapore, Asia)",
+        "Co-investment with institutional partners",
+        "APAC expansion"
+      ],
+      "recent_news": [
+        "Appointed VP Investor Relations (May 2024)",
+        "Part of AM Alpha's APAC expansion alongside Les Koltai (Head of Australia)"
+      ],
+      "previous_experience": [
+        "Director, Investment Strategy at Anken Group"
+      ],
+      "contact_info": {
+        "email_domain": "am-alpha.com",
+        "location": "Singapore",
+        "company_website": "https://www.amalpha.de/en/news/am-alpha-strengthens-its-apac-presence"
+      },
+      "credentials": "MRICS",
+      "education": "University of Reading",
+      "data_quality": "verified"
+    }
+  ],
+  "summary": {
+    "total_contacts": 16,
+    "verified": 14,
+    "limited_data": 2,
+    "sectors_covered": [
+      "Real estate private equity",
+      "Institutional real estate investment",
+      "Logistics and industrial",
+      "Hospitality",
+      "Commercial/retail",
+      "VC/family office",
+      "Legal advisory"
+    ],
+    "geographic_focus": [
+      "Greater China",
+      "Hong Kong",
+      "Singapore",
+      "Japan",
+      "Southeast Asia",
+      "Australia"
+    ]
+  }
+}

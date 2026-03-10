@@ -1,0 +1,339 @@
+{
+  "research_date": "2026-03-10",
+  "events": [
+    {
+      "name": "Mingtiandi Singapore Forum 2026",
+      "url": "https://www.mingtiandi.com/real-estate/events/mingtiandi-singapore-forum-2026/",
+      "dates": {
+        "start": "2026-05-12",
+        "end": "2026-05-12",
+        "confirmed": true
+      },
+      "location": {
+        "city": "Singapore",
+        "venue": "Conrad Singapore Marina Bay",
+        "country": "Singapore"
+      },
+      "registration": {
+        "early_bird_price": "USD 770",
+        "standard_price": "USD 1,100",
+        "early_bird_deadline": "2026-04-03",
+        "currency": "USD",
+        "notes": "Group discounts available at standard price"
+      },
+      "format": "in-person",
+      "attendee_profile": "C-level executives from pension funds, insurers, sovereign wealth funds, investment managers; 270+ on-location guests typical",
+      "speakers": [
+        "Ellen Ng - Managing Director, Co-Head of Asia Real Estate, Warburg Pincus",
+        "Michael Smith - Chief Executive, Hongkong Land",
+        "Angela Zhao - CEO, GLP China",
+        "Alan Watts - President, Asia Pacific, Hilton",
+        "Ginny Ang - CIO, Centurion Accommodation REIT",
+        "Neil Brookes - Head of Asia Pacific Capital Markets, Savills",
+        "Bryan Lee - Founder and CFO, AB Capital Investment",
+        "Aaron Lee - Founder and CEO, Dash Living"
+      ],
+      "topics": [
+        "Hospitality investment in Asia Pacific",
+        "Industrial and infrastructure investment",
+        "Global student housing strategies",
+        "Singapore as a global capital hub",
+        "Commercial investment in Asia Pacific",
+        "Residential investment outlook"
+      ],
+      "registration_deadline": null,
+      "data_quality": "high"
+    },
+    {
+      "name": "Mingtiandi APAC Logistics Forum 2026",
+      "url": "https://www.mingtiandi.com/real-estate/events/mingtiandi-apac-logistics-forum-2026/",
+      "dates": {
+        "sessions": [
+          {"date": "2026-06-09", "topic": "Spotlight Interview with Market Leader"},
+          {"date": "2026-06-11", "topic": "Logistics Investment in Japan and Korea"},
+          {"date": "2026-06-16", "topic": "Logistics Investment in Greater China"},
+          {"date": "2026-06-18", "topic": "Logistics Investment in Australia"},
+          {"date": "2026-06-23", "topic": "Logistics Investment in Asia's Emerging Markets"}
+        ],
+        "start": "2026-06-09",
+        "end": "2026-06-23",
+        "confirmed": true
+      },
+      "location": {
+        "city": "Online",
+        "venue": "MTD TV (Mingtiandi proprietary platform)",
+        "country": null
+      },
+      "registration": {
+        "price": "Free",
+        "notes": "Online viewing via MTD TV platform"
+      },
+      "format": "virtual",
+      "attendee_profile": "Logistics and industrial real estate investors, fund managers, developers; 24,000+ views since 2020 debut",
+      "speakers": [
+        "Past speakers include: Stuart Gibson (ESR), Brian Hung (APG Asset Management), Tim Wang (GLP China), Fion Ng (BW Industrial), James Lim (QUBE Industrial), Richard Stacker (Charter Hall)"
+      ],
+      "topics": [
+        "Warehouse investment strategies",
+        "E-commerce driven logistics",
+        "Japan, Korea, Greater China markets",
+        "Australia logistics sector",
+        "Southeast Asia and India emerging markets"
+      ],
+      "registration_deadline": null,
+      "data_quality": "high"
+    },
+    {
+      "name": "Mingtiandi APAC Data Centre Forum 2026",
+      "url": "https://www.mingtiandi.com/real-estate/events/mingtiandi-apac-data-centre-forum-2026/",
+      "dates": {
+        "sessions": [
+          {"date": "2026-10-13", "topic": "Spotlight Interview with Bridge Data Centres"},
+          {"date": "2026-10-14", "topic": "Investing in Asia's Hyperscale Market"},
+          {"date": "2026-10-15", "topic": "Southeast Asia's Data Centre Market"},
+          {"date": "2026-10-20", "topic": "Data Centres in Japan and Korea"},
+          {"date": "2026-10-22", "topic": "Data Centres in Australia"}
+        ],
+        "start": "2026-10-13",
+        "end": "2026-10-22",
+        "confirmed": true
+      },
+      "location": {
+        "city": "Online",
+        "venue": "MTD TV (Mingtiandi proprietary platform)",
+        "country": null
+      },
+      "registration": {
+        "price": "Free",
+        "notes": "Online viewing via MTD TV platform"
+      },
+      "format": "virtual",
+      "attendee_profile": "Digital infrastructure investors, pension funds, insurers, sovereign wealth funds; 15,800+ views since 2020 debut",
+      "speakers": [
+        "Past speakers include: Diarmid Massey (ESR), Serene Nah (Digital Realty), Rangu Salgame (Princeton Digital Group), Michael Tanujaya (ST Telemedia), Joelin Ma (APG), Yasuo Suzuki (NTT), Kevin Guan (Bridge Data Centres)"
+      ],
+      "topics": [
+        "Hyperscale market opportunities",
+        "Southeast Asia data centre growth (Malaysia, Thailand)",
+        "Japan market (1.6GW capacity)",
+        "Korea digital infrastructure",
+        "Australia data centre investment"
+      ],
+      "registration_deadline": null,
+      "data_quality": "high"
+    },
+    {
+      "name": "ULI Asia Pacific Summit 2026",
+      "url": "https://apacsummit.uli.org/",
+      "dates": {
+        "start": "2026-TBD",
+        "end": "2026-TBD",
+        "confirmed": false,
+        "notes": "Exact 2026 dates not yet announced; typically held late in year"
+      },
+      "location": {
+        "city": "Shanghai",
+        "venue": "TBD",
+        "country": "China"
+      },
+      "registration": {
+        "price": "TBD",
+        "early_bird_available": true,
+        "notes": "Early bird discounts offered; registration now open"
+      },
+      "format": "in-person",
+      "attendee_profile": "600+ attendees from 15+ countries; cross-sector real estate professionals, developers, investors, urbanists",
+      "speakers": [
+        "100+ speakers expected",
+        "Tim Wang - Executive President, GLP Capital Partners (2026 Programme Chair)"
+      ],
+      "topics": [
+        "AI and real estate",
+        "Affordability challenges",
+        "Redevelopment strategies",
+        "Sustainability",
+        "Resilient and regenerative cities",
+        "Capital markets"
+      ],
+      "additional_features": [
+        "12 study tours",
+        "ULI Asia Pacific Awards for Excellence"
+      ],
+      "registration_deadline": null,
+      "data_quality": "medium"
+    },
+    {
+      "name": "World Family Office Forum Asia 2026",
+      "url": "https://asia.worldfamilyofficeforum.com/",
+      "dates": {
+        "start": "2026-10-15",
+        "end": "2026-10-16",
+        "confirmed": true
+      },
+      "location": {
+        "city": "Hong Kong",
+        "venue": "The Ritz Carlton, Hong Kong (International Commerce Centre, West Kowloon)",
+        "country": "Hong Kong"
+      },
+      "registration": {
+        "price": "By invitation/qualification",
+        "notes": "Private forum requiring qualification assessment; contact info@connectgroup.global to inquire. All attendance subject to board approval."
+      },
+      "format": "in-person",
+      "attendee_profile": "Single family offices, ultra-high-net-worth business families, wealth principals, trusted advisors",
+      "speakers": [
+        "Anson Chan - Chairman & CEO, Bonds Group",
+        "Poman Lo - Vice Chairman, Century City International Holdings",
+        "Tim Draper - Founder, Draper Associates",
+        "David Chong Kok-Kong - Founder & President, Portcullis Group",
+        "Mahesh Harilela - Family Council Convenor, The Harilela Group",
+        "Rei Murakami - President, The Murakami Family Foundation",
+        "Previous attendees include principals from GP Group, Globaltec Capital, NF Trinity, Medway Investments"
+      ],
+      "topics": [
+        "Wealth management strategies",
+        "Investment opportunities",
+        "Family governance",
+        "Next-generation leadership",
+        "Impact investing"
+      ],
+      "supported_by": "Hong Kong Financial Services Development Council",
+      "registration_deadline": null,
+      "data_quality": "high"
+    },
+    {
+      "name": "Prestel & Partner Family Office Forum Singapore 2026",
+      "url": "https://www.prestelandpartner.com/familyofficeforumsingapore.html",
+      "dates": {
+        "start": "2026-04-21",
+        "end": "2026-04-22",
+        "confirmed": true
+      },
+      "location": {
+        "city": "Singapore",
+        "venue": "Raffles Singapore",
+        "country": "Singapore"
+      },
+      "registration": {
+        "full_delegate_pass": "GBP 3,490",
+        "one_day_pass": "GBP 2,990",
+        "family_office_price": "Free",
+        "currency": "GBP",
+        "notes": "Family offices and wealth-owners (min USD 150M AUM) attend free; solution providers pay listed fees. Contact ticket@prestelandpartner.com"
+      },
+      "format": "in-person",
+      "attendee_profile": "100+ single family offices and private wealth holders; family members, FO executives, advisors, wealth creators",
+      "speakers": [
+        "David Werdiger - Bestselling author, G2 family member, succession expert",
+        "Dr. Sanjay Tolani - Estate planning advisor, Founder of The Tolani Flow",
+        "Xavier Sarras - Principal, Maison S Family Office",
+        "Christopher Aw - Managing Partner, Pandan Ventures",
+        "Keith Chong - Founder and CEO, Syndersi Capital",
+        "Eric SayWei Neo - Executive Board Director, Medway Investments",
+        "Jonathan Fein - Director, Treïs"
+      ],
+      "topics": [
+        "Intergenerational wealth transition",
+        "Estate planning",
+        "Family office investment strategies",
+        "Digital marketing for wealth",
+        "Healthcare investments",
+        "Responsible investing"
+      ],
+      "registration_deadline": null,
+      "data_quality": "high"
+    },
+    {
+      "name": "WMI Global-Asia Family Office Summit 2026",
+      "url": "https://gfo-summit.wmi.edu.sg/",
+      "dates": {
+        "start": "2026-09-TBD",
+        "end": "2026-09-TBD",
+        "confirmed": false,
+        "notes": "2025 dates were 29-30 September at Conrad Singapore Marina Bay; 2026 dates not yet announced"
+      },
+      "location": {
+        "city": "Singapore",
+        "venue": "Conrad Singapore Marina Bay (based on 2025)",
+        "country": "Singapore"
+      },
+      "registration": {
+        "price": "TBD",
+        "notes": "Open to all interested individuals (subject to approval). Funding available through Singapore FinTech Association scheme for eligible participants."
+      },
+      "format": "in-person",
+      "attendee_profile": "600+ participants including global family offices, leading investors, ecosystem partners, advisors",
+      "tracks": [
+        "Owner's Symposium and Single Family Office Forum (Day 1)",
+        "Partners Forum (Day 2)"
+      ],
+      "speakers": [
+        "Past keynotes from MAS officials",
+        "Global family office principals",
+        "Investment thought leaders"
+      ],
+      "topics": [
+        "Geopolitics and wealth",
+        "Governance frameworks",
+        "Capital deployment strategies",
+        "Evolving investment approaches",
+        "Leadership and impact"
+      ],
+      "organized_by": "Wealth Management Institute (WMI)",
+      "supported_by": ["Singapore Economic Development Board (EDB)", "Monetary Authority of Singapore (MAS)"],
+      "registration_deadline": null,
+      "data_quality": "medium"
+    },
+    {
+      "name": "Campden Wealth Asia-Pacific Family Office & Investment Forum 2026",
+      "url": "https://www.campdenwealth.com/SGFOIF",
+      "dates": {
+        "start": "2026-09-09",
+        "end": "2026-09-10",
+        "confirmed": true
+      },
+      "location": {
+        "city": "Singapore",
+        "venue": "TBD",
+        "country": "Singapore"
+      },
+      "registration": {
+        "price": "Campden Club membership required",
+        "notes": "Attendance strictly limited to qualifying family offices, family businesses, and UHNWs. Must complete qualification process. Contact: Janice Tham (members) or Livi Septiani (non-members)"
+      },
+      "format": "in-person",
+      "attendee_profile": "Qualifying family offices, family businesses, ultra-high-net-worth individuals; Campden Club members",
+      "theme": "The New Dynasty: Family Offices Shaping Asia's Investment Future",
+      "speakers": [],
+      "topics": [
+        "Family enterprise strategies",
+        "Investment opportunities",
+        "Wealth creation",
+        "Next-generation leadership"
+      ],
+      "organized_by": "Campden Wealth",
+      "related_events": [
+        "15th Asia-Pacific Family Enterprise & Wealth Creation Forum (March 10-11, 2026, Singapore)"
+      ],
+      "registration_deadline": null,
+      "data_quality": "medium"
+    }
+  ],
+  "summary": {
+    "total_events": 8,
+    "in_person_events": 6,
+    "virtual_events": 2,
+    "free_events": 2,
+    "invitation_only_events": 3,
+    "key_cities": ["Singapore", "Hong Kong", "Shanghai", "Online"],
+    "date_range": "April - October 2026",
+    "research_notes": [
+      "Mingtiandi events offer good real estate industry networking at accessible prices",
+      "Family office forums largely invitation-based or member-only - target UHNW principals",
+      "ULI provides broad cross-sector real estate exposure with strong Asia-Pacific focus",
+      "WMI Summit backed by MAS/EDB suggests high-quality Singapore government engagement",
+      "Prestel & Partner offers free admission for qualified family offices (USD 150M+ AUM)",
+      "Consider early bird registration for Mingtiandi Singapore Forum (deadline April 3)"
+    ]
+  }
+}
