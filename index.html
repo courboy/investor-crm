@@ -401,23 +401,28 @@
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.textContent = 'Signing in...';
+            btn.disabled = true;
             
-            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-            
-            if (error) {
-                // If user doesn't exist, try to sign up
-                if (error.message.includes('Invalid login')) {
-                    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
-                    if (signUpError) {
-                        showError(signUpError.message);
-                    } else {
-                        showApp(signUpData.user);
-                    }
-                } else {
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+                
+                if (error) {
                     showError(error.message);
+                    btn.textContent = 'Sign In';
+                    btn.disabled = false;
+                } else if (data.user) {
+                    showApp(data.user);
+                } else {
+                    showError('Login failed - no user returned');
+                    btn.textContent = 'Sign In';
+                    btn.disabled = false;
                 }
-            } else {
-                showApp(data.user);
+            } catch (err) {
+                showError('Error: ' + err.message);
+                btn.textContent = 'Sign In';
+                btn.disabled = false;
             }
         }
 
