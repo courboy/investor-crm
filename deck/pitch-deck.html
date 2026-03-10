@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evo Lake Capital | APAC Acquisitions</title>
+    <title>Evo Lake | APAC Real Estate Acquisitions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -12,304 +12,324 @@
             .slide { page-break-after: always; height: 100vh; }
             .no-print { display: none; }
         }
-        .slide {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+        .slide { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
             justify-content: center;
-            padding: 60px 80px;
+            padding: 4rem;
         }
-        .gradient-bg { background: linear-gradient(135deg, #1e3a5f 0%, #0f1f33 100%); }
-        .accent { color: #f97316; }
+        .gradient-text {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- Slide 1: Title -->
-    <div class="slide gradient-bg text-white">
-        <div class="max-w-4xl">
-            <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center mb-8">
-                <span class="text-white font-bold text-2xl">E</span>
-            </div>
-            <h1 class="text-5xl font-bold mb-6">Your Outsourced Acquisitions Team<br>for APAC Real Estate</h1>
-            <p class="text-xl text-white/70 mb-12">We find, filter, and underwrite deals so you can focus on decisions.</p>
-            <div class="flex items-center gap-8 text-white/60">
-                <span>Singapore</span>
-                <span>•</span>
-                <span>Seoul</span>
-                <span>•</span>
-                <span>Tokyo</span>
-                <span>•</span>
-                <span>Sydney</span>
+    <!-- Navigation (no-print) -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur border-b border-gray-200 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+            <span class="font-bold text-[#1e3a5f]">Evo Lake</span>
+            <div class="flex gap-4">
+                <button onclick="window.print()" class="text-sm text-gray-600 hover:text-gray-900">Print / PDF</button>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Slide 1: Title -->
+    <section class="slide bg-gradient-to-br from-[#1e3a5f] to-[#0f1f33] text-white">
+        <div class="max-w-4xl">
+            <p class="text-lg text-blue-300 mb-4 font-medium">INTRODUCING</p>
+            <h1 class="text-6xl font-bold mb-6 leading-tight">Your Outsourced<br>Acquisitions Team</h1>
+            <p class="text-2xl text-blue-200 mb-12">APAC Real Estate | Singapore • Seoul • Tokyo • Sydney</p>
+            <div class="flex items-center gap-8 mt-12">
+                <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center">
+                    <span class="text-2xl font-bold">E</span>
+                </div>
+                <div>
+                    <p class="text-xl font-semibold">Evo Lake</p>
+                    <p class="text-blue-300">Real Estate Advisory</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Slide 2: The Problem -->
-    <div class="slide bg-gray-50">
+    <section class="slide bg-white">
         <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">The Problem</p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-8">You're drowning in deal flow.<br>Most of it is wrong for you.</h2>
-            <div class="grid grid-cols-3 gap-8 mt-12">
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                    <p class="text-5xl font-bold text-[#1e3a5f]">50+</p>
-                    <p class="text-gray-600 mt-2">Deal decks per week</p>
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">The Problem</p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-8 leading-tight">You're getting 50 deal<br>decks a week.</h2>
+            <p class="text-2xl text-gray-600 mb-12">48 of them are wrong for you.</p>
+            
+            <div class="grid grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <p class="text-4xl font-bold text-[#1e3a5f] mb-2">70%</p>
+                    <p class="text-gray-600">of broker decks don't match your criteria</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                    <p class="text-5xl font-bold text-[#1e3a5f]">~5%</p>
-                    <p class="text-gray-600 mt-2">Actually fit your criteria</p>
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <p class="text-4xl font-bold text-[#1e3a5f] mb-2">40hrs</p>
+                    <p class="text-gray-600">per week spent filtering deals</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-                    <p class="text-5xl font-bold text-[#1e3a5f]">0</p>
-                    <p class="text-gray-600 mt-2">Come pre-underwritten</p>
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <p class="text-4xl font-bold text-[#1e3a5f] mb-2">0</p>
+                    <p class="text-gray-600">brokers working exclusively for you</p>
                 </div>
             </div>
-            <p class="text-xl text-gray-600 mt-12">Brokers work for sellers. Who works for you?</p>
+            
+            <p class="text-xl text-gray-500 mt-12 italic">"Brokers work for sellers. Who's working for you?"</p>
         </div>
-    </div>
+    </section>
 
-    <!-- Slide 3: Our Solution -->
-    <div class="slide bg-white">
+    <!-- Slide 3: The Solution -->
+    <section class="slide bg-gray-50">
         <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Our Solution</p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-8">We're on your side of the table.</h2>
-            <div class="grid grid-cols-2 gap-8 mt-12">
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">The Solution</p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-8 leading-tight">We're on your side<br>of the table.</h2>
+            
+            <div class="grid grid-cols-2 gap-12 mt-12">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center text-white text-sm">1</span>
-                        Understand Your Criteria
-                    </h3>
-                    <p class="text-gray-600">Sector preferences, geography, deal size, return hurdles, risk appetite. We learn what you actually want.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center text-white text-sm">2</span>
-                        Source & Filter Deals
-                    </h3>
-                    <p class="text-gray-600">We tap our broker network across APAC. Only opportunities that match your criteria reach your desk.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center text-white text-sm">3</span>
-                        Underwrite & Model
-                    </h3>
-                    <p class="text-gray-600">Full financial models, sensitivity analysis, and investment committee-ready memos. Not just a teaser.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                        <span class="w-8 h-8 bg-[#1e3a5f] rounded-lg flex items-center justify-center text-white text-sm">4</span>
-                        Present & Advise
-                    </h3>
-                    <p class="text-gray-600">We present opportunities with our view. You make the final call. We execute alongside you.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4: Why Different -->
-    <div class="slide bg-gray-900 text-white">
-        <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Why We're Different</p>
-            <h2 class="text-4xl font-bold mb-12">Brokers push deals.<br>We curate opportunities.</h2>
-            <div class="overflow-hidden rounded-xl">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="border-b border-gray-700">
-                            <th class="py-4 pr-8 text-gray-400 font-medium"></th>
-                            <th class="py-4 px-8 text-gray-400 font-medium">Traditional Broker</th>
-                            <th class="py-4 px-8 text-[#f97316] font-medium">Evo Lake</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-lg">
-                        <tr class="border-b border-gray-800">
-                            <td class="py-4 pr-8 text-gray-400">Works for</td>
-                            <td class="py-4 px-8">The seller</td>
-                            <td class="py-4 px-8 text-[#f97316]">You (the buyer)</td>
-                        </tr>
-                        <tr class="border-b border-gray-800">
-                            <td class="py-4 pr-8 text-gray-400">Incentive</td>
-                            <td class="py-4 px-8">Close any deal</td>
-                            <td class="py-4 px-8 text-[#f97316]">Close the right deal</td>
-                        </tr>
-                        <tr class="border-b border-gray-800">
-                            <td class="py-4 pr-8 text-gray-400">Deal selection</td>
-                            <td class="py-4 px-8">Their mandates</td>
-                            <td class="py-4 px-8 text-[#f97316]">Your criteria</td>
-                        </tr>
-                        <tr class="border-b border-gray-800">
-                            <td class="py-4 pr-8 text-gray-400">Materials</td>
-                            <td class="py-4 px-8">Teaser + IM</td>
-                            <td class="py-4 px-8 text-[#f97316]">Full model + IC memo</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 pr-8 text-gray-400">Relationship</td>
-                            <td class="py-4 px-8">Transactional</td>
-                            <td class="py-4 px-8 text-[#f97316]">Ongoing partnership</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 5: Track Record -->
-    <div class="slide bg-white">
-        <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Track Record</p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">We've done this before.</h2>
-            <div class="grid grid-cols-2 gap-8">
-                <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
-                    <p class="text-sm text-gray-500 mb-2">UK Industrial Development</p>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Bromley, London</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Joint venture with Mitsubishi Estate</li>
-                        <li>• Industrial/logistics development</li>
-                        <li>• Full development cycle: acquisition → planning → delivery</li>
-                        <li>• Ongoing relationship with Japanese capital</li>
+                    <h3 class="text-xl font-semibold text-gray-400 mb-6">Traditional Broker</h3>
+                    <ul class="space-y-4 text-lg text-gray-500">
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">✗</span>
+                            <span>Works for the seller</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">✗</span>
+                            <span>Pushes mandated deals</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">✗</span>
+                            <span>Transaction-focused</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-400 mt-1">✗</span>
+                            <span>Stops at the introduction</span>
+                        </li>
                     </ul>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-8 border border-gray-200">
-                    <p class="text-sm text-gray-500 mb-2">Capital Partner Relationships</p>
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">Institutional Track Record</h3>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Direct experience with Japanese institutional capital</li>
-                        <li>• Understanding of APAC investor requirements</li>
-                        <li>• Cross-border deal structuring expertise</li>
-                        <li>• Active conversations with Hong Kong Land, CDPQ, family offices</li>
+                <div class="bg-white rounded-xl p-8 shadow-lg border-2 border-[#1e3a5f]">
+                    <h3 class="text-xl font-semibold text-[#1e3a5f] mb-6">Evo Lake</h3>
+                    <ul class="space-y-4 text-lg text-gray-900">
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Works for you</strong> (the buyer)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Curates deals</strong> that fit your criteria</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Relationship + advisory</strong> focused</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-green-500 mt-1">✓</span>
+                            <span><strong>Builds the model, writes the IC memo</strong></span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Slide 6: Markets -->
-    <div class="slide bg-gray-50">
+    <!-- Slide 4: How It Works -->
+    <section class="slide bg-white">
         <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Our Markets</p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">Focused on institutional-grade APAC.</h2>
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">How It Works</p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-12 leading-tight">Your dedicated<br>acquisitions function</h2>
+            
             <div class="grid grid-cols-4 gap-6">
-                <div class="bg-white rounded-xl p-6 border border-gray-200 text-center">
-                    <p class="text-3xl mb-2">🇸🇬</p>
-                    <h3 class="font-bold text-gray-900">Singapore</h3>
-                    <p class="text-sm text-gray-500 mt-2">Commercial, logistics, living</p>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-[#1e3a5f] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Understand</h3>
+                    <p class="text-sm text-gray-600">We learn your criteria: sectors, markets, returns, ticket size</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-200 text-center">
-                    <p class="text-3xl mb-2">🇰🇷</p>
-                    <h3 class="font-bold text-gray-900">Seoul</h3>
-                    <p class="text-sm text-gray-500 mt-2">Office, logistics</p>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-[#1e3a5f] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Source</h3>
+                    <p class="text-sm text-gray-600">We tap our network across APAC for off-market and on-market deals</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-200 text-center">
-                    <p class="text-3xl mb-2">🇯🇵</p>
-                    <h3 class="font-bold text-gray-900">Tokyo</h3>
-                    <p class="text-sm text-gray-500 mt-2">Hospitality, logistics, office</p>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-[#1e3a5f] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Underwrite</h3>
+                    <p class="text-sm text-gray-600">We build the model, stress-test assumptions, flag risks</p>
                 </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-200 text-center">
-                    <p class="text-3xl mb-2">🇦🇺</p>
-                    <h3 class="font-bold text-gray-900">Sydney</h3>
-                    <p class="text-sm text-gray-500 mt-2">Industrial, PBSA</p>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-[#1e3a5f] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Present</h3>
+                    <p class="text-sm text-gray-600">IC-ready memo with recommendation — you decide</p>
                 </div>
             </div>
-            <p class="text-gray-600 mt-12">Transparent legal systems. Institutional-grade assets. Deep broker networks.</p>
+            
+            <div class="mt-16 p-6 bg-blue-50 rounded-xl">
+                <p class="text-lg text-[#1e3a5f]"><strong>Result:</strong> You only see deals that fit. We do the legwork. You make the call.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Slide 7: How We Work -->
-    <div class="slide bg-white">
+    <!-- Slide 5: Markets -->
+    <section class="slide bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Engagement Model</p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">Flexible. Aligned. Low risk to start.</h2>
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">Our Focus</p>
+            <h2 class="text-5xl font-bold mb-12 leading-tight">Four markets.<br>Deep networks.</h2>
+            
             <div class="grid grid-cols-2 gap-8">
-                <div class="bg-[#1e3a5f] rounded-xl p-8 text-white">
-                    <p class="text-sm text-white/60 uppercase tracking-wider mb-2">Starting Point</p>
-                    <h3 class="text-2xl font-bold mb-4">Success Fee</h3>
-                    <ul class="space-y-3 text-white/80">
-                        <li>• No upfront commitment</li>
-                        <li>• We source, filter, underwrite</li>
-                        <li>• You only pay on successful acquisition</li>
-                        <li>• 0.5–1% of transaction value</li>
-                    </ul>
-                    <p class="mt-6 text-sm text-white/60">Best for: Testing the relationship</p>
+                <div class="bg-white/10 rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-2">Singapore</h3>
+                    <p class="text-gray-300 mb-4">APAC's capital hub. Logistics, commercial, living.</p>
+                    <p class="text-sm text-gray-400">Active relationships: Hong Kong Land, family offices</p>
                 </div>
-                <div class="bg-gray-100 rounded-xl p-8 border-2 border-[#f97316]">
-                    <p class="text-sm text-gray-500 uppercase tracking-wider mb-2">Preferred</p>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Retainer + Reduced Fee</h3>
-                    <ul class="space-y-3 text-gray-600">
-                        <li>• Dedicated search mandate</li>
-                        <li>• Priority access to opportunities</li>
-                        <li>• Quarterly strategy reviews</li>
-                        <li>• Reduced transaction fee on close</li>
-                    </ul>
-                    <p class="mt-6 text-sm text-gray-500">Best for: Ongoing acquisition programs</p>
+                <div class="bg-white/10 rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-2">Seoul</h3>
+                    <p class="text-gray-300 mb-4">Undervalued vs Tokyo. Office, logistics upside.</p>
+                    <p class="text-sm text-gray-400">Active pipeline: Office income opportunities</p>
+                </div>
+                <div class="bg-white/10 rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-2">Tokyo</h3>
+                    <p class="text-gray-300 mb-4">APAC's largest market. Hospitality, logistics.</p>
+                    <p class="text-sm text-gray-400">Network: Japanese institutional investors</p>
+                </div>
+                <div class="bg-white/10 rounded-xl p-6">
+                    <h3 class="text-2xl font-bold mb-2">Sydney</h3>
+                    <p class="text-gray-300 mb-4">Transparent market. Industrial, PBSA.</p>
+                    <p class="text-sm text-gray-400">Track record: Australian logistics deals</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Slide 6: Track Record -->
+    <section class="slide bg-white">
+        <div class="max-w-4xl">
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">Track Record</p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-12 leading-tight">We've done this before.</h2>
+            
+            <div class="space-y-8">
+                <div class="border-l-4 border-[#1e3a5f] pl-6">
+                    <h3 class="text-xl font-semibold text-gray-900">Mitsubishi Estates JV — UK Industrial</h3>
+                    <p class="text-gray-600 mt-2">Originated and structured a development joint venture with Mitsubishi Estates for UK industrial assets. Led the acquisition, planning, and delivery.</p>
+                    <p class="text-sm text-[#1e3a5f] mt-2 font-medium">Status: Active development</p>
+                </div>
+                
+                <div class="border-l-4 border-[#1e3a5f] pl-6">
+                    <h3 class="text-xl font-semibold text-gray-900">UK Industrial Portfolio — Development & Asset Management</h3>
+                    <p class="text-gray-600 mt-2">5+ years developing and managing industrial assets across the UK. Full cycle experience from site acquisition through stabilization.</p>
+                    <p class="text-sm text-[#1e3a5f] mt-2 font-medium">100,000+ sqm developed</p>
+                </div>
+                
+                <div class="border-l-4 border-gray-300 pl-6">
+                    <h3 class="text-xl font-semibold text-gray-900">APAC Pipeline — Active</h3>
+                    <p class="text-gray-600 mt-2">Currently sourcing income-producing opportunities across Singapore, Seoul, Tokyo, and Sydney for institutional capital partners.</p>
+                    <p class="text-sm text-gray-500 mt-2 font-medium">In discussions with Hong Kong Land, Japanese family offices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Engagement Model -->
+    <section class="slide bg-gray-50">
+        <div class="max-w-4xl">
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">Working Together</p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-12 leading-tight">Flexible engagement.</h2>
+            
+            <div class="grid grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Success Fee</h3>
+                    <p class="text-3xl font-bold text-[#1e3a5f] mb-4">0.5 – 1%</p>
+                    <p class="text-gray-600 mb-6">of transaction value on successful acquisition</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>• No upfront cost</li>
+                        <li>• We take the risk</li>
+                        <li>• Aligned incentives</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mt-6">Best for: Testing the relationship</p>
+                </div>
+                
+                <div class="bg-[#1e3a5f] rounded-xl p-8 text-white">
+                    <h3 class="text-xl font-semibold mb-2">Retainer + Fee</h3>
+                    <p class="text-3xl font-bold mb-4">Bespoke</p>
+                    <p class="text-blue-200 mb-6">Annual retainer + reduced success fee</p>
+                    <ul class="space-y-2 text-sm text-blue-100">
+                        <li>• Dedicated deal sourcing</li>
+                        <li>• Priority access to opportunities</li>
+                        <li>• Full underwriting support</li>
+                        <li>• Quarterly pipeline reviews</li>
+                    </ul>
+                    <p class="text-xs text-blue-300 mt-6">Best for: Ongoing partnership</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-500 mt-12">We can also provide asset management services for acquired assets.</p>
+        </div>
+    </section>
 
     <!-- Slide 8: Team -->
-    <div class="slide bg-gray-50">
+    <section class="slide bg-white">
         <div class="max-w-4xl">
-            <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">The Team</p>
-            <h2 class="text-4xl font-bold text-gray-900 mb-12">APAC relationships. UK execution experience.</h2>
+            <p class="text-sm font-semibold text-[#f97316] mb-4 uppercase tracking-wider">The Team</p>
+            <h2 class="text-5xl font-bold text-gray-900 mb-12 leading-tight">Operators, not brokers.</h2>
+            
             <div class="grid grid-cols-2 gap-12">
                 <div>
-                    <div class="w-20 h-20 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">AC</div>
-                    <h3 class="text-xl font-bold text-gray-900">Adam Courtenay</h3>
-                    <p class="text-[#f97316] font-medium mb-4">Deals & Underwriting</p>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• 10+ years UK real estate development</li>
-                        <li>• Track record with Mitsubishi Estate</li>
-                        <li>• Industrial/logistics specialism</li>
-                        <li>• Cambridge MBA</li>
-                    </ul>
+                    <div class="w-24 h-24 bg-[#1e3a5f] rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-3xl font-bold">AC</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900">Adam Courtenay</h3>
+                    <p class="text-[#1e3a5f] font-medium mb-4">Deals & Development</p>
+                    <p class="text-gray-600">5+ years developing UK industrial real estate. Led acquisitions and JV structuring with Mitsubishi Estates. Cambridge background.</p>
+                    <p class="text-sm text-gray-400 mt-4">Based in Singapore</p>
                 </div>
+                
                 <div>
-                    <div class="w-20 h-20 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4">BW</div>
-                    <h3 class="text-xl font-bold text-gray-900">Becca Wu</h3>
+                    <div class="w-24 h-24 bg-[#f97316] rounded-full flex items-center justify-center mb-6">
+                        <span class="text-white text-3xl font-bold">BW</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900">Becca Wu</h3>
                     <p class="text-[#f97316] font-medium mb-4">Relationships & Strategy</p>
-                    <ul class="space-y-2 text-gray-600">
-                        <li>• Ex-McKinsey (APAC)</li>
-                        <li>• Deep family office network</li>
-                        <li>• Institutional investor relationships</li>
-                        <li>• Singapore-based</li>
-                    </ul>
+                    <p class="text-gray-600">Former McKinsey, deep APAC family office network. Builds relationships that convert. Strategic advisory background.</p>
+                    <p class="text-sm text-gray-400 mt-4">Based in Singapore</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Slide 9: Next Steps -->
-    <div class="slide gradient-bg text-white">
-        <div class="max-w-4xl">
-            <h2 class="text-4xl font-bold mb-8">Let's talk about what you're looking for.</h2>
-            <p class="text-xl text-white/70 mb-12">A 30-minute conversation to understand your investment criteria and see if there's a fit.</p>
-            <div class="flex items-center gap-8">
+    <!-- Slide 9: CTA -->
+    <section class="slide bg-gradient-to-br from-[#1e3a5f] to-[#0f1f33] text-white">
+        <div class="max-w-4xl text-center mx-auto">
+            <h2 class="text-5xl font-bold mb-6 leading-tight">Ready to stop filtering<br>and start acquiring?</h2>
+            <p class="text-2xl text-blue-200 mb-12">Let's talk about what you're looking for.</p>
+            
+            <div class="flex justify-center gap-8 mb-16">
                 <div>
-                    <p class="text-white/60 text-sm mb-1">Email</p>
-                    <p class="text-lg">adam@evo-lake.com</p>
+                    <p class="text-lg text-blue-300">Adam Courtenay</p>
+                    <p class="text-xl font-semibold">adam@evo-lake.com</p>
                 </div>
+                <div class="w-px bg-white/20"></div>
                 <div>
-                    <p class="text-white/60 text-sm mb-1">Location</p>
-                    <p class="text-lg">Singapore</p>
+                    <p class="text-lg text-blue-300">Becca Wu</p>
+                    <p class="text-xl font-semibold">becca@evo-lake.com</p>
                 </div>
             </div>
-            <div class="mt-16 pt-8 border-t border-white/20">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">E</span>
-                    </div>
-                    <div>
-                        <p class="font-semibold">Evo Lake Capital</p>
-                        <p class="text-white/60 text-sm">APAC Real Estate Acquisitions</p>
-                    </div>
+            
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                    <span class="font-bold">E</span>
                 </div>
+                <span class="text-xl font-semibold">Evo Lake</span>
             </div>
         </div>
-    </div>
-
-    <!-- Print instructions (hidden in print) -->
-    <div class="no-print fixed bottom-4 right-4 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm">
-        Press Cmd+P (Mac) or Ctrl+P (Windows) to save as PDF
-    </div>
+    </section>
 
 </body>
 </html>
