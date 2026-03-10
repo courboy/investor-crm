@@ -6,6 +6,7 @@
     <title>Investor CRM | Evo Lake</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
@@ -29,141 +30,155 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 bg-[#1e3a5f] rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">E</span>
+    <!-- Login Screen -->
+    <div id="login-screen" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1e3a5f] to-[#0f1f33]">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-[#1e3a5f] rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <span class="text-white font-bold text-2xl">E</span>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-900">Investor CRM</h1>
+                <p class="text-gray-500 mt-2">Sign in to continue</p>
+            </div>
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="login-email" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent" placeholder="you@example.com">
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-gray-900">Investor CRM</h1>
-                        <p class="text-sm text-gray-500">Pipeline & Relationship Management</p>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input type="password" id="login-password" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-[#1e3a5f] focus:border-transparent" placeholder="••••••••">
                     </div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <button onclick="openAddContactModal()" class="bg-[#1e3a5f] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#2d4a6f] transition flex items-center gap-2">
-                        <i data-lucide="user-plus" class="w-4 h-4"></i>
-                        Add Contact
-                    </button>
-                    <button onclick="openAddDealModal()" class="bg-[#f97316] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#ea580c] transition flex items-center gap-2">
-                        <i data-lucide="briefcase" class="w-4 h-4"></i>
-                        Add Deal
+                    <button type="submit" class="w-full bg-[#1e3a5f] text-white py-3 rounded-lg font-medium hover:bg-[#2d4a6f] transition">
+                        Sign In
                     </button>
                 </div>
+            </form>
+            <div class="mt-6 text-center">
+                <button onclick="showSignUp()" class="text-sm text-[#1e3a5f] hover:underline">Need an account? Sign up</button>
             </div>
+            <div id="login-error" class="hidden mt-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm"></div>
         </div>
-    </header>
+    </div>
 
-    <!-- Navigation Tabs -->
-    <nav class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex gap-8">
-                <button onclick="switchTab('pipeline')" id="tab-pipeline" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900 tab-active">
-                    Pipeline
-                </button>
-                <button onclick="switchTab('contacts')" id="tab-contacts" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">
-                    All Contacts
-                </button>
-                <button onclick="switchTab('events')" id="tab-events" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">
-                    Events
-                </button>
-                <button onclick="switchTab('deals')" id="tab-deals" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">
-                    Deals
-                </button>
-                <button onclick="switchTab('suggested')" id="tab-suggested" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">
-                    Suggested Contacts
-                </button>
-                <button onclick="switchTab('matching')" id="tab-matching" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">
-                    Deal Matching
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 py-6">
-        <!-- Stats Bar -->
-        <div class="grid grid-cols-6 gap-4 mb-6">
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <p class="text-2xl font-bold text-gray-900" id="stat-total">0</p>
-                <p class="text-sm text-gray-500">Total Contacts</p>
-            </div>
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <p class="text-2xl font-bold text-[#f59e0b]" id="stat-research">0</p>
-                <p class="text-sm text-gray-500">In Research</p>
-            </div>
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <p class="text-2xl font-bold text-[#3b82f6]" id="stat-outreach">0</p>
-                <p class="text-sm text-gray-500">In Outreach</p>
-            </div>
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <p class="text-2xl font-bold text-[#10b981]" id="stat-active">0</p>
-                <p class="text-sm text-gray-500">Active</p>
-            </div>
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <p class="text-2xl font-bold text-gray-900" id="stat-events">0</p>
-                <p class="text-sm text-gray-500">Upcoming Events</p>
-            </div>
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <p class="text-2xl font-bold text-[#f97316]" id="stat-deals">0</p>
-                <p class="text-sm text-gray-500">Active Deals</p>
-            </div>
-        </div>
-
-        <!-- Pipeline View -->
-        <div id="view-pipeline" class="tab-content">
-            <div class="flex gap-4 overflow-x-auto pb-4" id="kanban-board">
-                <!-- Columns will be rendered here -->
-            </div>
-        </div>
-
-        <!-- All Contacts View -->
-        <div id="view-contacts" class="tab-content hidden">
-            <div class="bg-white rounded-lg border border-gray-200">
-                <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+    <!-- Main App (hidden until logged in) -->
+    <div id="main-app" class="hidden">
+        <!-- Header -->
+        <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
                     <div class="flex items-center gap-4">
-                        <input type="text" id="contact-search" placeholder="Search contacts..." class="border border-gray-300 rounded-lg px-4 py-2 text-sm w-64" oninput="filterContacts()">
-                        <select id="contact-type-filter" class="border border-gray-300 rounded-lg px-4 py-2 text-sm" onchange="filterContacts()">
-                            <option value="">All Types</option>
-                        </select>
+                        <div class="w-10 h-10 bg-[#1e3a5f] rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">E</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-gray-900">Investor CRM</h1>
+                            <p class="text-sm text-gray-500">Pipeline & Relationship Management</p>
+                        </div>
                     </div>
-                    <div class="text-sm text-gray-500">
-                        <span id="contacts-showing">0</span> contacts
+                    <div class="flex items-center gap-3">
+                        <span id="user-email" class="text-sm text-gray-500"></span>
+                        <button onclick="openAddContactModal()" class="bg-[#1e3a5f] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#2d4a6f] transition flex items-center gap-2">
+                            <i data-lucide="user-plus" class="w-4 h-4"></i>
+                            Add Contact
+                        </button>
+                        <button onclick="openAddDealModal()" class="bg-[#f97316] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#ea580c] transition flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-4 h-4"></i>
+                            Add Deal
+                        </button>
+                        <button onclick="handleLogout()" class="text-gray-500 hover:text-gray-700 p-2">
+                            <i data-lucide="log-out" class="w-5 h-5"></i>
+                        </button>
                     </div>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Name</th>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Company</th>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Type</th>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Stage</th>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Relationship</th>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Last Contact</th>
-                                <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="contacts-table-body" class="divide-y divide-gray-200">
-                            <!-- Rows will be rendered here -->
-                        </tbody>
-                    </table>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <!-- Events View -->
-        <div id="view-events" class="tab-content hidden">
-            <div class="grid gap-4">
+        <!-- Navigation Tabs -->
+        <nav class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex gap-8">
+                    <button onclick="switchTab('pipeline')" id="tab-pipeline" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900 tab-active">Pipeline</button>
+                    <button onclick="switchTab('contacts')" id="tab-contacts" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">All Contacts</button>
+                    <button onclick="switchTab('events')" id="tab-events" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">Events</button>
+                    <button onclick="switchTab('deals')" id="tab-deals" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">Deals</button>
+                    <button onclick="switchTab('suggested')" id="tab-suggested" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">Suggested</button>
+                    <button onclick="switchTab('matching')" id="tab-matching" class="py-4 text-sm font-medium text-gray-600 hover:text-gray-900">Deal Matching</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 py-6">
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-6 gap-4 mb-6">
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <p class="text-2xl font-bold text-gray-900" id="stat-total">0</p>
+                    <p class="text-sm text-gray-500">Total Contacts</p>
+                </div>
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <p class="text-2xl font-bold text-[#f59e0b]" id="stat-research">0</p>
+                    <p class="text-sm text-gray-500">In Research</p>
+                </div>
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <p class="text-2xl font-bold text-[#3b82f6]" id="stat-outreach">0</p>
+                    <p class="text-sm text-gray-500">In Outreach</p>
+                </div>
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <p class="text-2xl font-bold text-[#10b981]" id="stat-active">0</p>
+                    <p class="text-sm text-gray-500">Active</p>
+                </div>
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <p class="text-2xl font-bold text-gray-900" id="stat-events">0</p>
+                    <p class="text-sm text-gray-500">Events</p>
+                </div>
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <p class="text-2xl font-bold text-[#f97316]" id="stat-deals">0</p>
+                    <p class="text-sm text-gray-500">Active Deals</p>
+                </div>
+            </div>
+
+            <!-- Pipeline View -->
+            <div id="view-pipeline" class="tab-content">
+                <div class="flex gap-4 overflow-x-auto pb-4" id="kanban-board"></div>
+            </div>
+
+            <!-- All Contacts View -->
+            <div id="view-contacts" class="tab-content hidden">
+                <div class="bg-white rounded-lg border border-gray-200">
+                    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <input type="text" id="contact-search" placeholder="Search contacts..." class="border border-gray-300 rounded-lg px-4 py-2 text-sm w-64" oninput="filterContacts()">
+                            <select id="contact-type-filter" class="border border-gray-300 rounded-lg px-4 py-2 text-sm" onchange="filterContacts()">
+                                <option value="">All Types</option>
+                            </select>
+                        </div>
+                        <div class="text-sm text-gray-500"><span id="contacts-showing">0</span> contacts</div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Name</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Company</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Type</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Stage</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Last Contact</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contacts-table-body" class="divide-y divide-gray-200"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Events View -->
+            <div id="view-events" class="tab-content hidden">
                 <div class="bg-white rounded-lg border border-gray-200 p-4">
                     <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg font-semibold text-gray-900">Upcoming Events</h2>
-                        <button onclick="openAddEventModal()" class="text-sm text-[#1e3a5f] hover:underline flex items-center gap-1">
-                            <i data-lucide="plus" class="w-4 h-4"></i>
-                            Add Event
-                        </button>
+                        <h2 class="text-lg font-semibold text-gray-900">Events</h2>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full">
@@ -173,87 +188,64 @@
                                     <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Format</th>
                                     <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Location</th>
                                     <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Date</th>
-                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Suitability</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Cost</th>
+                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Score</th>
                                     <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Attending</th>
-                                    <th class="text-left text-xs font-medium text-gray-500 uppercase tracking-wider px-4 py-3">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody id="events-table-body" class="divide-y divide-gray-200">
-                                <!-- Rows will be rendered here -->
-                            </tbody>
+                            <tbody id="events-table-body" class="divide-y divide-gray-200"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Deals View -->
-        <div id="view-deals" class="tab-content hidden">
-            <div class="grid gap-4">
+            <!-- Deals View -->
+            <div id="view-deals" class="tab-content hidden">
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Active Deals</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="deals-grid"></div>
+                </div>
+            </div>
+
+            <!-- Suggested Contacts View -->
+            <div id="view-suggested" class="tab-content hidden">
                 <div class="bg-white rounded-lg border border-gray-200 p-4">
                     <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-lg font-semibold text-gray-900">Active Deals</h2>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="deals-grid">
-                        <!-- Deal cards will be rendered here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Suggested Contacts View -->
-        <div id="view-suggested" class="tab-content hidden">
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 class="text-lg font-semibold text-gray-900">AI-Suggested Contacts</h2>
-                        <p class="text-sm text-gray-500">Contacts identified from research and forum attendee lists</p>
-                    </div>
-                    <button onclick="refreshSuggestions()" class="text-sm bg-[#1e3a5f] text-white px-4 py-2 rounded-lg hover:bg-[#2d4a6f] transition flex items-center gap-2">
-                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                        Refresh Suggestions
-                    </button>
-                </div>
-                <div id="suggested-contacts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <!-- Suggested contact cards will be rendered here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Deal Matching View -->
-        <div id="view-matching" class="tab-content hidden">
-            <div class="bg-white rounded-lg border border-gray-200 p-4">
-                <div class="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 class="text-lg font-semibold text-gray-900">Deal → Investor Matching</h2>
-                        <p class="text-sm text-gray-500">Find the right investors for each deal</p>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="font-medium text-gray-900 mb-3">Select a Deal</h3>
-                        <div id="matching-deals-list" class="space-y-2">
-                            <!-- Deal selector will be rendered here -->
+                        <div>
+                            <h2 class="text-lg font-semibold text-gray-900">AI-Suggested Contacts</h2>
+                            <p class="text-sm text-gray-500">From family office forum research</p>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="font-medium text-gray-900 mb-3">Matching Investors</h3>
-                        <div id="matching-results" class="space-y-2">
-                            <p class="text-sm text-gray-500">Select a deal to see matching investors</p>
+                    <div id="suggested-contacts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                </div>
+            </div>
+
+            <!-- Deal Matching View -->
+            <div id="view-matching" class="tab-content hidden">
+                <div class="bg-white rounded-lg border border-gray-200 p-4">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Deal → Investor Matching</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-3">Select a Deal</h3>
+                            <div id="matching-deals-list" class="space-y-2"></div>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-3">Matching Investors</h3>
+                            <div id="matching-results" class="space-y-2">
+                                <p class="text-sm text-gray-500">Select a deal to see matching investors</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <!-- Contact Detail Modal -->
     <div id="contact-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0" onclick="closeContactModal()"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div class="p-6" id="contact-modal-content">
-                <!-- Content will be rendered here -->
-            </div>
+            <div class="p-6" id="contact-modal-content"></div>
         </div>
     </div>
 
@@ -264,9 +256,7 @@
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-semibold text-gray-900">Add New Contact</h2>
-                    <button onclick="closeAddContactModal()" class="text-gray-400 hover:text-gray-600">
-                        <i data-lucide="x" class="w-6 h-6"></i>
-                    </button>
+                    <button onclick="closeAddContactModal()" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
                 </div>
                 <form id="add-contact-form" onsubmit="submitNewContact(event)">
                     <div class="space-y-4">
@@ -287,8 +277,7 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                                <select name="type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" id="add-contact-type-select">
-                                </select>
+                                <select name="type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" id="add-contact-type-select"></select>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
@@ -330,9 +319,7 @@
             <div class="p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-xl font-semibold text-gray-900">Add New Deal</h2>
-                    <button onclick="closeAddDealModal()" class="text-gray-400 hover:text-gray-600">
-                        <i data-lucide="x" class="w-6 h-6"></i>
-                    </button>
+                    <button onclick="closeAddDealModal()" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
                 </div>
                 <form id="add-deal-form" onsubmit="submitNewDeal(event)">
                     <div class="space-y-4">
@@ -343,8 +330,7 @@
                         <div class="grid grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
-                                <select name="type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" id="add-deal-type-select">
-                                </select>
+                                <select name="type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" id="add-deal-type-select"></select>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Location</label>
@@ -376,65 +362,131 @@
     </div>
 
     <script>
+        // Supabase config
+        const SUPABASE_URL = 'https://nkftwhmwowbopyhfjigl.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5rZnR3aG13b3dib3B5aGZqaWdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxMTc4NDYsImV4cCI6MjA4ODY5Mzg0Nn0.Eq6palv0gsGGpCFd5_OAb2wEtwtIwsCxwekG3o3IFXY';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
         // Data
         let contacts = [];
         let events = [];
         let deals = [];
-        let stages = [];
-        let types = [];
-        let dealTypes = [];
+        const stages = [
+            { id: 'suggested', name: 'Suggested', color: '#94a3b8' },
+            { id: 'research', name: 'Research', color: '#f59e0b' },
+            { id: 'outreach', name: 'Outreach', color: '#3b82f6' },
+            { id: 'responded', name: 'Responded', color: '#8b5cf6' },
+            { id: 'meeting', name: 'Meeting Set', color: '#ec4899' },
+            { id: 'active', name: 'Active', color: '#10b981' },
+            { id: 'closed_won', name: 'Closed (Won)', color: '#22c55e' },
+            { id: 'closed_lost', name: 'Closed (Lost)', color: '#ef4444' },
+            { id: 'dormant', name: 'Dormant', color: '#6b7280' }
+        ];
+        const types = ['Family Office', 'Investment Manager', 'Private Equity', 'Sovereign Wealth / Pension', 'Asset Manager', 'Developer', 'Corporate', 'Advisor/Lawyer', 'Unknown'];
+        const dealTypes = ['Office', 'Industrial', 'Logistics', 'Retail', 'Residential', 'Mixed-Use', 'Data Centre', 'Hospitality', 'Living'];
 
-        // Initialize
-        async function init() {
+        // Auth
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (session) {
+                showApp(session.user);
+            } else {
+                document.getElementById('login-screen').classList.remove('hidden');
+                document.getElementById('main-app').classList.add('hidden');
+            }
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+            
+            if (error) {
+                // If user doesn't exist, try to sign up
+                if (error.message.includes('Invalid login')) {
+                    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
+                    if (signUpError) {
+                        showError(signUpError.message);
+                    } else {
+                        showApp(signUpData.user);
+                    }
+                } else {
+                    showError(error.message);
+                }
+            } else {
+                showApp(data.user);
+            }
+        }
+
+        function showSignUp() {
+            alert('Enter your email and password, then click Sign In. An account will be created automatically if one doesn\'t exist.');
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('login-error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
+        async function handleLogout() {
+            await supabase.auth.signOut();
+            location.reload();
+        }
+
+        async function showApp(user) {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+            document.getElementById('user-email').textContent = user.email;
             await loadData();
             renderAll();
             lucide.createIcons();
         }
 
+        // Load data from Supabase
         async function loadData() {
-            try {
-                const contactsRes = await fetch('data/contacts.json');
-                const contactsData = await contactsRes.json();
-                contacts = contactsData.contacts || [];
-                stages = contactsData.stages || [];
-                types = contactsData.types || [];
-
-                const eventsRes = await fetch('data/events.json');
-                const eventsData = await eventsRes.json();
-                events = eventsData.events || [];
-
-                const dealsRes = await fetch('data/deals.json');
-                const dealsData = await dealsRes.json();
-                deals = dealsData.deals || [];
-                dealTypes = dealsData.dealTypes || [];
-            } catch (e) {
-                console.error('Error loading data:', e);
-                // Initialize with empty data
-                stages = [
-                    { id: 'suggested', name: 'Suggested', color: '#94a3b8' },
-                    { id: 'research', name: 'Research', color: '#f59e0b' },
-                    { id: 'outreach', name: 'Outreach', color: '#3b82f6' },
-                    { id: 'responded', name: 'Responded', color: '#8b5cf6' },
-                    { id: 'meeting', name: 'Meeting Set', color: '#ec4899' },
-                    { id: 'active', name: 'Active', color: '#10b981' },
-                    { id: 'closed_won', name: 'Closed (Won)', color: '#22c55e' },
-                    { id: 'closed_lost', name: 'Closed (Lost)', color: '#ef4444' },
-                    { id: 'dormant', name: 'Dormant', color: '#6b7280' }
-                ];
-                types = ['Family Office', 'Investment Manager', 'Private Equity', 'Sovereign Wealth / Pension', 'Asset Manager', 'Developer', 'Corporate', 'Advisor/Lawyer', 'Unknown'];
-                dealTypes = ['Office', 'Industrial', 'Logistics', 'Retail', 'Residential', 'Mixed-Use', 'Data Centre', 'Hospitality', 'Living'];
-            }
+            const [contactsRes, eventsRes, dealsRes] = await Promise.all([
+                supabase.from('contacts').select('*').order('name'),
+                supabase.from('events').select('*').order('suitability_score', { ascending: false }),
+                supabase.from('deals').select('*').order('created_at', { ascending: false })
+            ]);
+            
+            contacts = (contactsRes.data || []).map(c => ({
+                ...c,
+                investmentCriteria: c.investment_criteria || {},
+                relationshipStrength: c.relationship_strength,
+                introducedBy: c.introduced_by,
+                canIntroTo: c.can_intro_to || [],
+                aiComments: c.ai_comments,
+                lastContacted: c.last_contacted,
+                nextFollowUp: c.next_follow_up,
+                meetingNotes: c.meeting_notes || []
+            }));
+            
+            events = (eventsRes.data || []).map(e => ({
+                ...e,
+                dateEnd: e.date_end,
+                attendeeProfile: e.attendee_profile,
+                suitabilityScore: e.suitability_score,
+                suitabilityNotes: e.suitability_notes
+            }));
+            
+            deals = dealsRes.data || [];
             
             // Populate type selects
             const typeSelect = document.getElementById('contact-type-filter');
             const addTypeSelect = document.getElementById('add-contact-type-select');
+            typeSelect.innerHTML = '<option value="">All Types</option>';
+            addTypeSelect.innerHTML = '';
             types.forEach(type => {
                 typeSelect.innerHTML += `<option value="${type}">${type}</option>`;
                 addTypeSelect.innerHTML += `<option value="${type}">${type}</option>`;
             });
             
-            // Populate deal type select
             const dealTypeSelect = document.getElementById('add-deal-type-select');
+            dealTypeSelect.innerHTML = '';
             dealTypes.forEach(type => {
                 dealTypeSelect.innerHTML += `<option value="${type}">${type}</option>`;
             });
@@ -459,7 +511,7 @@
             document.getElementById('stat-deals').textContent = deals.filter(d => d.status === 'Active').length;
         }
 
-        // Kanban Board
+        // Kanban
         function renderKanban() {
             const board = document.getElementById('kanban-board');
             const visibleStages = stages.filter(s => s.id !== 'suggested');
@@ -467,11 +519,8 @@
             board.innerHTML = visibleStages.map(stage => {
                 const stageContacts = contacts.filter(c => c.stage === stage.id);
                 return `
-                    <div class="kanban-column flex-shrink-0 w-72 bg-gray-100 rounded-lg p-3" 
-                         data-stage="${stage.id}"
-                         ondragover="handleDragOver(event)"
-                         ondrop="handleDrop(event)"
-                         ondragleave="handleDragLeave(event)">
+                    <div class="kanban-column flex-shrink-0 w-72 bg-gray-100 rounded-lg p-3" data-stage="${stage.id}"
+                         ondragover="handleDragOver(event)" ondrop="handleDrop(event)" ondragleave="handleDragLeave(event)">
                         <div class="flex items-center justify-between mb-3">
                             <div class="flex items-center gap-2">
                                 <div class="w-3 h-3 rounded-full" style="background: ${stage.color}"></div>
@@ -479,79 +528,50 @@
                             </div>
                             <span class="text-xs text-gray-500 bg-gray-200 px-2 py-0.5 rounded-full">${stageContacts.length}</span>
                         </div>
-                        <div class="space-y-2">
-                            ${stageContacts.map(c => renderContactCard(c)).join('')}
-                        </div>
-                    </div>
-                `;
+                        <div class="space-y-2">${stageContacts.map(c => renderContactCard(c)).join('')}</div>
+                    </div>`;
             }).join('');
-            
             lucide.createIcons();
         }
 
-        function renderContactCard(contact) {
-            const relationshipClass = contact.relationshipStrength === 'warm' ? 'relationship-warm' : 
-                                      contact.relationshipStrength === 'hot' ? 'relationship-hot' : 'relationship-cold';
+        function renderContactCard(c) {
+            const relClass = c.relationshipStrength === 'warm' ? 'relationship-warm' : c.relationshipStrength === 'hot' ? 'relationship-hot' : 'relationship-cold';
             return `
-                <div class="contact-card bg-white rounded-lg border border-gray-200 p-3 cursor-pointer ${relationshipClass}"
-                     draggable="true"
-                     data-id="${contact.id}"
-                     ondragstart="handleDragStart(event)"
-                     ondragend="handleDragEnd(event)"
-                     onclick="openContactModal('${contact.id}')">
+                <div class="contact-card bg-white rounded-lg border border-gray-200 p-3 cursor-pointer ${relClass}"
+                     draggable="true" data-id="${c.id}" ondragstart="handleDragStart(event)" ondragend="handleDragEnd(event)"
+                     onclick="openContactModal('${c.id}')">
                     <div class="flex items-start justify-between mb-2">
                         <div>
-                            <p class="font-medium text-sm text-gray-900">${contact.name}</p>
-                            <p class="text-xs text-gray-500">${contact.title || ''} ${contact.title && contact.company ? '•' : ''} ${contact.company || ''}</p>
+                            <p class="font-medium text-sm text-gray-900">${c.name}</p>
+                            <p class="text-xs text-gray-500">${c.title || ''} ${c.title && c.company ? '•' : ''} ${c.company || ''}</p>
                         </div>
-                        ${contact.linkedin ? `<a href="${contact.linkedin}" target="_blank" onclick="event.stopPropagation()" class="text-[#0077b5] hover:opacity-70"><i data-lucide="linkedin" class="w-4 h-4"></i></a>` : ''}
+                        ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" onclick="event.stopPropagation()" class="text-[#0077b5] hover:opacity-70"><i data-lucide="linkedin" class="w-4 h-4"></i></a>` : ''}
                     </div>
                     <div class="flex items-center gap-2 mb-2">
-                        <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">${contact.type}</span>
-                        ${contact.location ? `<span class="text-xs text-gray-500">${contact.location}</span>` : ''}
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">${c.type}</span>
+                        ${c.location ? `<span class="text-xs text-gray-500">${c.location}</span>` : ''}
                     </div>
-                    ${contact.notes ? `<p class="text-xs text-gray-600 line-clamp-2">${contact.notes}</p>` : ''}
-                    ${contact.lastContacted ? `<p class="text-xs text-gray-400 mt-2">Last contact: ${contact.lastContacted}</p>` : ''}
-                </div>
-            `;
+                    ${c.notes ? `<p class="text-xs text-gray-600 line-clamp-2">${c.notes}</p>` : ''}
+                    ${c.lastContacted ? `<p class="text-xs text-gray-400 mt-2">Last: ${c.lastContacted}</p>` : ''}
+                </div>`;
         }
 
         // Drag and Drop
-        let draggedElement = null;
-
-        function handleDragStart(e) {
-            draggedElement = e.target;
-            e.target.classList.add('dragging');
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/plain', e.target.dataset.id);
-        }
-
-        function handleDragEnd(e) {
-            e.target.classList.remove('dragging');
-            document.querySelectorAll('.kanban-column').forEach(col => col.classList.remove('drag-over'));
-        }
-
-        function handleDragOver(e) {
+        let draggedId = null;
+        function handleDragStart(e) { draggedId = e.target.dataset.id; e.target.classList.add('dragging'); }
+        function handleDragEnd(e) { e.target.classList.remove('dragging'); document.querySelectorAll('.kanban-column').forEach(col => col.classList.remove('drag-over')); }
+        function handleDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+        function handleDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+        
+        async function handleDrop(e) {
             e.preventDefault();
-            e.currentTarget.classList.add('drag-over');
-        }
-
-        function handleDragLeave(e) {
             e.currentTarget.classList.remove('drag-over');
-        }
-
-        function handleDrop(e) {
-            e.preventDefault();
-            const column = e.currentTarget;
-            column.classList.remove('drag-over');
-            const contactId = e.dataTransfer.getData('text/plain');
-            const newStage = column.dataset.stage;
+            const newStage = e.currentTarget.dataset.stage;
             
-            const contact = contacts.find(c => c.id === contactId);
-            if (contact) {
-                contact.stage = newStage;
-                contact.updatedAt = new Date().toISOString().split('T')[0];
-                saveData();
+            const { error } = await supabase.from('contacts').update({ stage: newStage, updated_at: new Date().toISOString() }).eq('id', draggedId);
+            if (!error) {
+                const c = contacts.find(c => c.id === draggedId);
+                if (c) c.stage = newStage;
                 renderKanban();
                 updateStats();
             }
@@ -560,117 +580,83 @@
         // Contacts Table
         function renderContactsTable() {
             const tbody = document.getElementById('contacts-table-body');
-            const filteredContacts = getFilteredContacts();
+            const filtered = getFilteredContacts();
+            document.getElementById('contacts-showing').textContent = filtered.length;
             
-            document.getElementById('contacts-showing').textContent = filteredContacts.length;
-            
-            tbody.innerHTML = filteredContacts.map(c => {
+            tbody.innerHTML = filtered.map(c => {
                 const stage = stages.find(s => s.id === c.stage);
                 return `
                     <tr class="hover:bg-gray-50 cursor-pointer" onclick="openContactModal('${c.id}')">
                         <td class="px-4 py-3">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white text-sm font-medium">
-                                    ${c.name.charAt(0)}
-                                </div>
-                                <div>
-                                    <p class="font-medium text-gray-900">${c.name}</p>
-                                    <p class="text-xs text-gray-500">${c.title || ''}</p>
-                                </div>
+                                <div class="w-8 h-8 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white text-sm font-medium">${c.name.charAt(0)}</div>
+                                <div><p class="font-medium text-gray-900">${c.name}</p><p class="text-xs text-gray-500">${c.title || ''}</p></div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm text-gray-600">${c.company || '-'}</td>
                         <td class="px-4 py-3"><span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">${c.type}</span></td>
                         <td class="px-4 py-3"><span class="text-xs px-2 py-1 rounded-full text-white" style="background: ${stage?.color || '#6b7280'}">${stage?.name || c.stage}</span></td>
-                        <td class="px-4 py-3"><span class="text-xs capitalize">${c.relationshipStrength || 'cold'}</span></td>
                         <td class="px-4 py-3 text-sm text-gray-600">${c.lastContacted || '-'}</td>
                         <td class="px-4 py-3">
                             <div class="flex items-center gap-2">
-                                ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" onclick="event.stopPropagation()" class="text-[#0077b5] hover:opacity-70"><i data-lucide="linkedin" class="w-4 h-4"></i></a>` : ''}
-                                ${c.email ? `<a href="mailto:${c.email}" onclick="event.stopPropagation()" class="text-gray-400 hover:text-gray-600"><i data-lucide="mail" class="w-4 h-4"></i></a>` : ''}
-                                <button onclick="event.stopPropagation(); logContact('${c.id}')" class="text-gray-400 hover:text-gray-600" title="Log contact">
-                                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                                </button>
+                                ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" onclick="event.stopPropagation()" class="text-[#0077b5]"><i data-lucide="linkedin" class="w-4 h-4"></i></a>` : ''}
+                                ${c.email ? `<a href="mailto:${c.email}" onclick="event.stopPropagation()" class="text-gray-400"><i data-lucide="mail" class="w-4 h-4"></i></a>` : ''}
                             </div>
                         </td>
-                    </tr>
-                `;
+                    </tr>`;
             }).join('');
-            
             lucide.createIcons();
         }
 
         function getFilteredContacts() {
             const search = document.getElementById('contact-search').value.toLowerCase();
             const type = document.getElementById('contact-type-filter').value;
-            
             return contacts.filter(c => {
-                const matchesSearch = !search || 
-                    c.name.toLowerCase().includes(search) || 
-                    (c.company && c.company.toLowerCase().includes(search));
+                const matchesSearch = !search || c.name.toLowerCase().includes(search) || (c.company && c.company.toLowerCase().includes(search));
                 const matchesType = !type || c.type === type;
                 return matchesSearch && matchesType;
             });
         }
 
-        function filterContacts() {
-            renderContactsTable();
-            lucide.createIcons();
-        }
+        function filterContacts() { renderContactsTable(); lucide.createIcons(); }
 
-        // Events Table
+        // Events
         function renderEventsTable() {
             const tbody = document.getElementById('events-table-body');
-            
-            const sortedEvents = [...events].sort((a, b) => (b.suitabilityScore || 0) - (a.suitabilityScore || 0));
-            
-            tbody.innerHTML = sortedEvents.map(e => {
+            tbody.innerHTML = events.map(e => {
                 const scoreClass = e.suitabilityScore >= 8 ? 'score-high' : e.suitabilityScore >= 5 ? 'score-medium' : 'score-low';
                 return `
                     <tr class="hover:bg-gray-50">
                         <td class="px-4 py-3">
-                            <div>
-                                <a href="${e.url}" target="_blank" class="font-medium text-[#1e3a5f] hover:underline">${e.name}</a>
-                                <p class="text-xs text-gray-500 mt-1">${e.attendeeProfile || ''}</p>
-                            </div>
+                            <a href="${e.url || '#'}" target="_blank" class="font-medium text-[#1e3a5f] hover:underline">${e.name}</a>
+                            <p class="text-xs text-gray-500 mt-1">${e.attendeeProfile || ''}</p>
                         </td>
                         <td class="px-4 py-3"><span class="text-xs px-2 py-1 rounded-full ${e.format === 'Virtual' ? 'bg-purple-100 text-purple-700' : 'bg-green-100 text-green-700'}">${e.format}</span></td>
                         <td class="px-4 py-3 text-sm text-gray-600">${e.location || '-'}</td>
                         <td class="px-4 py-3 text-sm text-gray-600">${e.date || 'TBD'}</td>
-                        <td class="px-4 py-3">
-                            <div class="flex items-center gap-2">
-                                <span class="text-sm font-medium px-2 py-1 rounded ${scoreClass}">${e.suitabilityScore}/10</span>
-                            </div>
-                        </td>
+                        <td class="px-4 py-3 text-sm text-gray-600">${e.cost || '-'}</td>
+                        <td class="px-4 py-3"><span class="text-sm font-medium px-2 py-1 rounded ${scoreClass}">${e.suitabilityScore}/10</span></td>
                         <td class="px-4 py-3">
                             <select class="text-xs border border-gray-300 rounded px-2 py-1" onchange="updateEventAttending('${e.id}', this.value)">
                                 <option value="" ${e.attending === null ? 'selected' : ''}>Undecided</option>
-                                <option value="yes" ${e.attending === true ? 'selected' : ''}>Attending</option>
-                                <option value="no" ${e.attending === false ? 'selected' : ''}>Not Attending</option>
+                                <option value="yes" ${e.attending === true ? 'selected' : ''}>Yes</option>
+                                <option value="no" ${e.attending === false ? 'selected' : ''}>No</option>
                             </select>
                         </td>
-                        <td class="px-4 py-3">
-                            <button onclick="viewEventDetails('${e.id}')" class="text-sm text-[#1e3a5f] hover:underline">Details</button>
-                        </td>
-                    </tr>
-                `;
+                    </tr>`;
             }).join('');
-            
-            lucide.createIcons();
         }
 
-        function updateEventAttending(eventId, value) {
-            const event = events.find(e => e.id === eventId);
-            if (event) {
-                event.attending = value === 'yes' ? true : value === 'no' ? false : null;
-                saveData();
-            }
+        async function updateEventAttending(id, value) {
+            const attending = value === 'yes' ? true : value === 'no' ? false : null;
+            await supabase.from('events').update({ attending }).eq('id', id);
+            const e = events.find(e => e.id === id);
+            if (e) e.attending = attending;
         }
 
-        // Deals Grid
+        // Deals
         function renderDealsGrid() {
             const grid = document.getElementById('deals-grid');
-            
             grid.innerHTML = deals.map(d => `
                 <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
                     <div class="flex items-start justify-between mb-3">
@@ -680,439 +666,241 @@
                         </div>
                         <span class="text-xs px-2 py-1 rounded-full ${d.status === 'Active' ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-600'}">${d.status}</span>
                     </div>
-                    ${d.size || d.price ? `
-                        <div class="flex gap-4 text-sm text-gray-600 mb-3">
-                            ${d.size ? `<span>Size: ${d.size}</span>` : ''}
-                            ${d.price ? `<span>Price: ${d.price}</span>` : ''}
-                        </div>
-                    ` : ''}
+                    ${d.size || d.price ? `<div class="flex gap-4 text-sm text-gray-600 mb-3">${d.size ? `<span>Size: ${d.size}</span>` : ''}${d.price ? `<span>Price: ${d.price}</span>` : ''}</div>` : ''}
                     <p class="text-sm text-gray-600 mb-3">${d.description || ''}</p>
-                    ${d.sharedWith && d.sharedWith.length > 0 ? `
-                        <div class="text-xs text-gray-500">
-                            Shared with ${d.sharedWith.length} investor(s)
-                        </div>
-                    ` : ''}
-                    <div class="flex gap-2 mt-3">
-                        <button onclick="findMatchingInvestors('${d.id}')" class="text-xs bg-[#1e3a5f] text-white px-3 py-1 rounded hover:bg-[#2d4a6f] transition">Find Investors</button>
-                    </div>
-                </div>
-            `).join('');
+                    <button onclick="findMatchingInvestors('${d.id}')" class="text-xs bg-[#1e3a5f] text-white px-3 py-1 rounded hover:bg-[#2d4a6f]">Find Investors</button>
+                </div>`).join('');
         }
 
-        // Suggested Contacts
+        // Suggested
         function renderSuggestedContacts() {
             const grid = document.getElementById('suggested-contacts-grid');
-            const suggestedContacts = contacts.filter(c => c.stage === 'suggested');
+            const suggested = contacts.filter(c => c.stage === 'suggested');
             
-            if (suggestedContacts.length === 0) {
-                grid.innerHTML = `
-                    <div class="col-span-3 text-center py-12">
-                        <i data-lucide="users" class="w-12 h-12 text-gray-300 mx-auto mb-4"></i>
-                        <p class="text-gray-500">No suggested contacts yet</p>
-                        <p class="text-sm text-gray-400 mt-2">Click "Refresh Suggestions" to find new potential contacts</p>
-                    </div>
-                `;
+            if (suggested.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-12"><p class="text-gray-500">No suggested contacts</p></div>`;
             } else {
-                grid.innerHTML = suggestedContacts.map(c => `
+                grid.innerHTML = suggested.map(c => `
                     <div class="bg-gray-50 rounded-lg border border-gray-200 p-4">
                         <div class="flex items-start justify-between mb-3">
                             <div>
                                 <h3 class="font-semibold text-gray-900">${c.name}</h3>
                                 <p class="text-sm text-gray-500">${c.title || ''} ${c.title && c.company ? '•' : ''} ${c.company || ''}</p>
                             </div>
-                            ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" class="text-[#0077b5] hover:opacity-70"><i data-lucide="linkedin" class="w-4 h-4"></i></a>` : ''}
+                            ${c.linkedin ? `<a href="${c.linkedin}" target="_blank" class="text-[#0077b5]"><i data-lucide="linkedin" class="w-4 h-4"></i></a>` : ''}
                         </div>
                         <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">${c.type}</span>
                         ${c.aiComments ? `<p class="text-xs text-gray-600 mt-3">${c.aiComments}</p>` : ''}
                         <div class="flex gap-2 mt-4">
-                            <button onclick="addToResearch('${c.id}')" class="text-xs bg-[#1e3a5f] text-white px-3 py-1 rounded hover:bg-[#2d4a6f] transition">Add to Research</button>
-                            <button onclick="dismissSuggestion('${c.id}')" class="text-xs text-gray-500 px-3 py-1 rounded hover:bg-gray-200 transition">Dismiss</button>
+                            <button onclick="addToResearch('${c.id}')" class="text-xs bg-[#1e3a5f] text-white px-3 py-1 rounded hover:bg-[#2d4a6f]">Add to Research</button>
+                            <button onclick="dismissSuggestion('${c.id}')" class="text-xs text-gray-500 px-3 py-1 rounded hover:bg-gray-200">Dismiss</button>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
             }
-            
             lucide.createIcons();
         }
 
-        function addToResearch(contactId) {
-            const contact = contacts.find(c => c.id === contactId);
-            if (contact) {
-                contact.stage = 'research';
-                contact.updatedAt = new Date().toISOString().split('T')[0];
-                saveData();
-                renderAll();
-                lucide.createIcons();
-            }
+        async function addToResearch(id) {
+            await supabase.from('contacts').update({ stage: 'research' }).eq('id', id);
+            const c = contacts.find(c => c.id === id);
+            if (c) c.stage = 'research';
+            renderAll(); lucide.createIcons();
         }
 
-        function dismissSuggestion(contactId) {
-            contacts = contacts.filter(c => c.id !== contactId);
-            saveData();
-            renderSuggestedContacts();
-            updateStats();
-            lucide.createIcons();
+        async function dismissSuggestion(id) {
+            await supabase.from('contacts').delete().eq('id', id);
+            contacts = contacts.filter(c => c.id !== id);
+            renderSuggestedContacts(); updateStats(); lucide.createIcons();
         }
 
-        function refreshSuggestions() {
-            alert('This will trigger AI research to find new potential contacts from forum attendee lists and other sources. In production, this would spawn sub-agents to scrape and analyze data.');
-        }
-
-        // Deal Matching
+        // Matching
         function renderMatchingView() {
-            const dealsList = document.getElementById('matching-deals-list');
-            
-            dealsList.innerHTML = deals.map(d => `
-                <button onclick="showMatchingResults('${d.id}')" class="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-[#1e3a5f] hover:bg-gray-50 transition">
+            const list = document.getElementById('matching-deals-list');
+            list.innerHTML = deals.map(d => `
+                <button onclick="showMatchingResults('${d.id}')" class="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-[#1e3a5f] hover:bg-gray-50">
                     <p class="font-medium text-gray-900">${d.name}</p>
                     <p class="text-sm text-gray-500">${d.type} • ${d.location}</p>
-                </button>
-            `).join('');
+                </button>`).join('');
         }
 
         function showMatchingResults(dealId) {
             const deal = deals.find(d => d.id === dealId);
             const results = document.getElementById('matching-results');
-            
             if (!deal) return;
             
-            // Simple matching logic - in production this would be more sophisticated
-            const matchedContacts = contacts.filter(c => {
+            const matched = contacts.filter(c => {
                 if (c.stage === 'suggested' || c.stage === 'closed_lost' || c.stage === 'dormant') return false;
-                
                 const criteria = c.investmentCriteria || {};
                 const sectors = criteria.sectors || [];
                 const geography = criteria.geography || [];
-                
-                const sectorMatch = sectors.length === 0 || sectors.some(s => 
-                    deal.type.toLowerCase().includes(s.toLowerCase()) || 
-                    s.toLowerCase().includes(deal.type.toLowerCase())
-                );
-                
-                const geoMatch = geography.length === 0 || geography.some(g =>
-                    deal.location.toLowerCase().includes(g.toLowerCase()) ||
-                    g.toLowerCase() === 'apac' || g.toLowerCase() === 'asia'
-                );
-                
+                const sectorMatch = sectors.length === 0 || sectors.some(s => deal.type && (deal.type.toLowerCase().includes(s.toLowerCase()) || s.toLowerCase().includes(deal.type.toLowerCase())));
+                const geoMatch = geography.length === 0 || geography.some(g => deal.location && (deal.location.toLowerCase().includes(g.toLowerCase()) || g.toLowerCase() === 'apac' || g.toLowerCase() === 'asia'));
                 return sectorMatch || geoMatch;
             });
             
-            if (matchedContacts.length === 0) {
-                results.innerHTML = `<p class="text-sm text-gray-500">No matching investors found for this deal criteria.</p>`;
-            } else {
-                results.innerHTML = matchedContacts.map(c => `
+            results.innerHTML = matched.length === 0 ? `<p class="text-sm text-gray-500">No matching investors found.</p>` :
+                matched.map(c => `
                     <div class="p-3 rounded-lg border border-gray-200 hover:bg-gray-50">
                         <div class="flex items-center justify-between">
-                            <div>
-                                <p class="font-medium text-gray-900">${c.name}</p>
-                                <p class="text-sm text-gray-500">${c.company || c.type}</p>
-                            </div>
+                            <div><p class="font-medium text-gray-900">${c.name}</p><p class="text-sm text-gray-500">${c.company || c.type}</p></div>
                             <div class="flex items-center gap-2">
                                 <span class="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700">Match</span>
                                 <button onclick="openContactModal('${c.id}')" class="text-xs text-[#1e3a5f] hover:underline">View</button>
                             </div>
                         </div>
-                        ${c.investmentCriteria?.sectors?.length ? `
-                            <p class="text-xs text-gray-500 mt-2">Sectors: ${c.investmentCriteria.sectors.join(', ')}</p>
-                        ` : ''}
-                    </div>
-                `).join('');
-            }
+                    </div>`).join('');
         }
 
-        function findMatchingInvestors(dealId) {
-            switchTab('matching');
-            showMatchingResults(dealId);
-        }
+        function findMatchingInvestors(dealId) { switchTab('matching'); showMatchingResults(dealId); }
 
         // Contact Modal
-        function openContactModal(contactId) {
-            const contact = contacts.find(c => c.id === contactId);
-            if (!contact) return;
-            
-            const modal = document.getElementById('contact-modal');
+        function openContactModal(id) {
+            const c = contacts.find(c => c.id === id);
+            if (!c) return;
+            const stage = stages.find(s => s.id === c.stage);
             const content = document.getElementById('contact-modal-content');
-            const stage = stages.find(s => s.id === contact.stage);
             
             content.innerHTML = `
                 <div class="flex items-start justify-between mb-6">
                     <div class="flex items-center gap-4">
-                        <div class="w-16 h-16 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white text-2xl font-medium">
-                            ${contact.name.charAt(0)}
-                        </div>
+                        <div class="w-16 h-16 rounded-full bg-[#1e3a5f] flex items-center justify-center text-white text-2xl font-medium">${c.name.charAt(0)}</div>
                         <div>
-                            <h2 class="text-xl font-semibold text-gray-900">${contact.name}</h2>
-                            <p class="text-gray-600">${contact.title || ''} ${contact.title && contact.company ? '•' : ''} ${contact.company || ''}</p>
+                            <h2 class="text-xl font-semibold text-gray-900">${c.name}</h2>
+                            <p class="text-gray-600">${c.title || ''} ${c.title && c.company ? '•' : ''} ${c.company || ''}</p>
                             <div class="flex items-center gap-2 mt-2">
-                                <span class="text-xs px-2 py-1 rounded-full text-white" style="background: ${stage?.color || '#6b7280'}">${stage?.name || contact.stage}</span>
-                                <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">${contact.type}</span>
-                                <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 capitalize">${contact.relationshipStrength || 'cold'}</span>
+                                <span class="text-xs px-2 py-1 rounded-full text-white" style="background: ${stage?.color || '#6b7280'}">${stage?.name || c.stage}</span>
+                                <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">${c.type}</span>
                             </div>
                         </div>
                     </div>
-                    <button onclick="closeContactModal()" class="text-gray-400 hover:text-gray-600">
-                        <i data-lucide="x" class="w-6 h-6"></i>
-                    </button>
+                    <button onclick="closeContactModal()" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-6 h-6"></i></button>
                 </div>
-                
                 <div class="grid grid-cols-2 gap-6 mb-6">
                     <div>
                         <h3 class="text-sm font-medium text-gray-900 mb-3">Contact Info</h3>
                         <div class="space-y-2">
-                            ${contact.email ? `<p class="text-sm"><span class="text-gray-500">Email:</span> <a href="mailto:${contact.email}" class="text-[#1e3a5f] hover:underline">${contact.email}</a></p>` : ''}
-                            ${contact.phone ? `<p class="text-sm"><span class="text-gray-500">Phone:</span> ${contact.phone}</p>` : ''}
-                            ${contact.location ? `<p class="text-sm"><span class="text-gray-500">Location:</span> ${contact.location}</p>` : ''}
-                            ${contact.linkedin ? `<p class="text-sm"><span class="text-gray-500">LinkedIn:</span> <a href="${contact.linkedin}" target="_blank" class="text-[#0077b5] hover:underline">View Profile</a></p>` : ''}
+                            ${c.email ? `<p class="text-sm"><span class="text-gray-500">Email:</span> <a href="mailto:${c.email}" class="text-[#1e3a5f] hover:underline">${c.email}</a></p>` : ''}
+                            ${c.phone ? `<p class="text-sm"><span class="text-gray-500">Phone:</span> ${c.phone}</p>` : ''}
+                            ${c.location ? `<p class="text-sm"><span class="text-gray-500">Location:</span> ${c.location}</p>` : ''}
+                            ${c.linkedin ? `<p class="text-sm"><span class="text-gray-500">LinkedIn:</span> <a href="${c.linkedin}" target="_blank" class="text-[#0077b5] hover:underline">View Profile</a></p>` : ''}
                         </div>
                     </div>
                     <div>
                         <h3 class="text-sm font-medium text-gray-900 mb-3">Investment Criteria</h3>
                         <div class="space-y-2">
-                            <p class="text-sm"><span class="text-gray-500">Sectors:</span> ${contact.investmentCriteria?.sectors?.join(', ') || 'Not specified'}</p>
-                            <p class="text-sm"><span class="text-gray-500">Geography:</span> ${contact.investmentCriteria?.geography?.join(', ') || 'Not specified'}</p>
-                            <p class="text-sm"><span class="text-gray-500">Ticket Size:</span> ${contact.investmentCriteria?.ticketSize || 'Not specified'}</p>
+                            <p class="text-sm"><span class="text-gray-500">Sectors:</span> ${c.investmentCriteria?.sectors?.join(', ') || 'Not specified'}</p>
+                            <p class="text-sm"><span class="text-gray-500">Geography:</span> ${c.investmentCriteria?.geography?.join(', ') || 'Not specified'}</p>
                         </div>
                     </div>
                 </div>
-                
-                ${contact.notes ? `
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium text-gray-900 mb-2">Notes</h3>
-                        <p class="text-sm text-gray-600 bg-gray-50 rounded-lg p-3">${contact.notes}</p>
-                    </div>
-                ` : ''}
-                
-                ${contact.aiComments ? `
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium text-gray-900 mb-2">AI Research</h3>
-                        <p class="text-sm text-gray-600 bg-blue-50 rounded-lg p-3">${contact.aiComments}</p>
-                    </div>
-                ` : ''}
-                
-                ${contact.canIntroTo && contact.canIntroTo.length > 0 ? `
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium text-gray-900 mb-2">Can Introduce To</h3>
-                        <div class="flex flex-wrap gap-2">
-                            ${contact.canIntroTo.map(i => `<span class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-700">${i}</span>`).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-                
-                ${contact.meetingNotes && contact.meetingNotes.length > 0 ? `
-                    <div class="mb-6">
-                        <h3 class="text-sm font-medium text-gray-900 mb-2">Meeting History</h3>
-                        <div class="space-y-3">
-                            ${contact.meetingNotes.map(m => `
-                                <div class="bg-gray-50 rounded-lg p-3">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <span class="text-xs font-medium text-gray-900">${m.date}</span>
-                                        <span class="text-xs px-2 py-0.5 rounded bg-gray-200 text-gray-600">${m.type}</span>
-                                    </div>
-                                    <p class="text-sm text-gray-600">${m.notes}</p>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-                
+                ${c.notes ? `<div class="mb-6"><h3 class="text-sm font-medium text-gray-900 mb-2">Notes</h3><p class="text-sm text-gray-600 bg-gray-50 rounded-lg p-3">${c.notes}</p></div>` : ''}
+                ${c.aiComments ? `<div class="mb-6"><h3 class="text-sm font-medium text-gray-900 mb-2">AI Research</h3><p class="text-sm text-gray-600 bg-blue-50 rounded-lg p-3">${c.aiComments}</p></div>` : ''}
                 <div class="flex items-center gap-3 pt-4 border-t border-gray-200">
-                    <button onclick="logContact('${contact.id}')" class="flex-1 bg-[#1e3a5f] text-white py-2 rounded-lg text-sm font-medium hover:bg-[#2d4a6f] transition">
-                        Log Contact
-                    </button>
-                    <button onclick="setFollowUp('${contact.id}')" class="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition">
-                        Set Follow-up
-                    </button>
-                    <select onchange="updateContactStage('${contact.id}', this.value)" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
-                        ${stages.map(s => `<option value="${s.id}" ${s.id === contact.stage ? 'selected' : ''}>${s.name}</option>`).join('')}
+                    <button onclick="logContact('${c.id}')" class="flex-1 bg-[#1e3a5f] text-white py-2 rounded-lg text-sm font-medium hover:bg-[#2d4a6f]">Log Contact</button>
+                    <select onchange="updateContactStage('${c.id}', this.value)" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        ${stages.map(s => `<option value="${s.id}" ${s.id === c.stage ? 'selected' : ''}>${s.name}</option>`).join('')}
                     </select>
-                </div>
-            `;
+                </div>`;
             
-            modal.classList.remove('hidden');
+            document.getElementById('contact-modal').classList.remove('hidden');
             lucide.createIcons();
         }
 
-        function closeContactModal() {
-            document.getElementById('contact-modal').classList.add('hidden');
+        function closeContactModal() { document.getElementById('contact-modal').classList.add('hidden'); }
+
+        async function updateContactStage(id, newStage) {
+            await supabase.from('contacts').update({ stage: newStage }).eq('id', id);
+            const c = contacts.find(c => c.id === id);
+            if (c) c.stage = newStage;
+            renderAll(); closeContactModal(); lucide.createIcons();
         }
 
-        function updateContactStage(contactId, newStage) {
-            const contact = contacts.find(c => c.id === contactId);
-            if (contact) {
-                contact.stage = newStage;
-                contact.updatedAt = new Date().toISOString().split('T')[0];
-                saveData();
+        async function logContact(id) {
+            const notes = prompt('Enter contact notes:');
+            if (notes) {
+                const today = new Date().toISOString().split('T')[0];
+                const c = contacts.find(c => c.id === id);
+                const meetingNotes = c.meetingNotes || [];
+                meetingNotes.unshift({ date: today, type: 'contact', notes });
+                
+                await supabase.from('contacts').update({ last_contacted: today, meeting_notes: meetingNotes }).eq('id', id);
+                c.lastContacted = today;
+                c.meetingNotes = meetingNotes;
                 renderAll();
-                closeContactModal();
+                if (!document.getElementById('contact-modal').classList.contains('hidden')) openContactModal(id);
                 lucide.createIcons();
             }
         }
 
-        function logContact(contactId) {
-            const contact = contacts.find(c => c.id === contactId);
-            if (contact) {
-                const notes = prompt('Enter contact notes:');
-                if (notes) {
-                    contact.lastContacted = new Date().toISOString().split('T')[0];
-                    contact.meetingNotes = contact.meetingNotes || [];
-                    contact.meetingNotes.unshift({
-                        date: new Date().toISOString().split('T')[0],
-                        type: 'contact',
-                        notes: notes
-                    });
-                    contact.updatedAt = new Date().toISOString().split('T')[0];
-                    saveData();
-                    renderAll();
-                    if (!document.getElementById('contact-modal').classList.contains('hidden')) {
-                        openContactModal(contactId);
-                    }
-                    lucide.createIcons();
-                }
-            }
-        }
+        // Add Contact
+        function openAddContactModal() { document.getElementById('add-contact-modal').classList.remove('hidden'); lucide.createIcons(); }
+        function closeAddContactModal() { document.getElementById('add-contact-modal').classList.add('hidden'); document.getElementById('add-contact-form').reset(); }
 
-        function setFollowUp(contactId) {
-            const contact = contacts.find(c => c.id === contactId);
-            if (contact) {
-                const date = prompt('Enter follow-up date (YYYY-MM-DD):');
-                if (date) {
-                    contact.nextFollowUp = date;
-                    contact.updatedAt = new Date().toISOString().split('T')[0];
-                    saveData();
-                    alert(`Follow-up set for ${date}`);
-                }
-            }
-        }
-
-        // Add Contact Modal
-        function openAddContactModal() {
-            document.getElementById('add-contact-modal').classList.remove('hidden');
-            lucide.createIcons();
-        }
-
-        function closeAddContactModal() {
-            document.getElementById('add-contact-modal').classList.add('hidden');
-            document.getElementById('add-contact-form').reset();
-        }
-
-        function submitNewContact(e) {
+        async function submitNewContact(e) {
             e.preventDefault();
             const form = e.target;
-            const formData = new FormData(form);
+            const fd = new FormData(form);
             
-            const newContact = {
-                id: 'c' + Date.now(),
-                name: formData.get('name'),
-                title: formData.get('title'),
-                company: formData.get('company'),
-                type: formData.get('type') || 'Unknown',
-                linkedin: formData.get('linkedin'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                location: formData.get('location'),
+            const { data, error } = await supabase.from('contacts').insert({
+                name: fd.get('name'),
+                title: fd.get('title'),
+                company: fd.get('company'),
+                type: fd.get('type') || 'Unknown',
+                linkedin: fd.get('linkedin'),
+                email: fd.get('email'),
+                phone: fd.get('phone'),
+                location: fd.get('location'),
                 stage: 'research',
-                investmentCriteria: { sectors: [], geography: [], ticketSize: '' },
-                relationshipStrength: 'cold',
-                source: 'Manual entry',
-                introducedBy: '',
-                canIntroTo: [],
-                notes: formData.get('notes'),
-                aiComments: '',
-                lastContacted: null,
-                nextFollowUp: null,
-                meetingNotes: [],
-                createdAt: new Date().toISOString().split('T')[0],
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
+                notes: fd.get('notes'),
+                relationship_strength: 'cold'
+            }).select();
             
-            contacts.push(newContact);
-            saveData();
-            closeAddContactModal();
-            renderAll();
-            lucide.createIcons();
+            if (!error && data) {
+                contacts.push({ ...data[0], investmentCriteria: {}, relationshipStrength: 'cold', meetingNotes: [] });
+                closeAddContactModal();
+                renderAll();
+                lucide.createIcons();
+            }
         }
 
-        // Add Deal Modal
-        function openAddDealModal() {
-            document.getElementById('add-deal-modal').classList.remove('hidden');
-            lucide.createIcons();
-        }
+        // Add Deal
+        function openAddDealModal() { document.getElementById('add-deal-modal').classList.remove('hidden'); lucide.createIcons(); }
+        function closeAddDealModal() { document.getElementById('add-deal-modal').classList.add('hidden'); document.getElementById('add-deal-form').reset(); }
 
-        function closeAddDealModal() {
-            document.getElementById('add-deal-modal').classList.add('hidden');
-            document.getElementById('add-deal-form').reset();
-        }
-
-        function submitNewDeal(e) {
+        async function submitNewDeal(e) {
             e.preventDefault();
             const form = e.target;
-            const formData = new FormData(form);
+            const fd = new FormData(form);
             
-            const newDeal = {
-                id: 'd' + Date.now(),
-                name: formData.get('name'),
-                type: formData.get('type') || 'Mixed-Use',
-                location: formData.get('location'),
+            const { data, error } = await supabase.from('deals').insert({
+                name: fd.get('name'),
+                type: fd.get('type') || 'Mixed-Use',
+                location: fd.get('location'),
                 status: 'Active',
-                size: formData.get('size'),
-                price: formData.get('price'),
-                description: formData.get('description'),
-                keyFeatures: [],
-                targetInvestorProfile: { sectors: [], geography: [], minTicket: '', investorTypes: [] },
-                sharedWith: [],
-                interestedInvestors: [],
-                notes: '',
-                createdAt: new Date().toISOString().split('T')[0],
-                updatedAt: new Date().toISOString().split('T')[0]
-            };
+                size: fd.get('size'),
+                price: fd.get('price'),
+                description: fd.get('description')
+            }).select();
             
-            deals.push(newDeal);
-            saveData();
-            closeAddDealModal();
-            renderAll();
-            lucide.createIcons();
+            if (!error && data) {
+                deals.push(data[0]);
+                closeAddDealModal();
+                renderAll();
+                lucide.createIcons();
+            }
         }
 
-        // Tab Switching
+        // Tab switching
         function switchTab(tabName) {
-            // Hide all views
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            // Remove active class from all tabs
             document.querySelectorAll('nav button').forEach(el => el.classList.remove('tab-active'));
-            
-            // Show selected view
             document.getElementById(`view-${tabName}`).classList.remove('hidden');
-            // Add active class to selected tab
             document.getElementById(`tab-${tabName}`).classList.add('tab-active');
-            
             lucide.createIcons();
         }
 
-        // Save Data (localStorage for now - in production would use backend)
-        function saveData() {
-            localStorage.setItem('investor-crm-contacts', JSON.stringify(contacts));
-            localStorage.setItem('investor-crm-events', JSON.stringify(events));
-            localStorage.setItem('investor-crm-deals', JSON.stringify(deals));
-        }
-
-        // Load from localStorage on init
-        function loadFromLocalStorage() {
-            const savedContacts = localStorage.getItem('investor-crm-contacts');
-            const savedEvents = localStorage.getItem('investor-crm-events');
-            const savedDeals = localStorage.getItem('investor-crm-deals');
-            
-            if (savedContacts) contacts = JSON.parse(savedContacts);
-            if (savedEvents) events = JSON.parse(savedEvents);
-            if (savedDeals) deals = JSON.parse(savedDeals);
-        }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', async () => {
-            await init();
-            loadFromLocalStorage();
-            if (contacts.length > 0) renderAll();
-            lucide.createIcons();
-        });
+        // Initialize
+        checkAuth();
     </script>
 </body>
 </html>
