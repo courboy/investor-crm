@@ -1,6 +1,35 @@
 {
   "deals": [
     {
+      "id": "d003",
+      "name": "Project Paradise - 107 Defu Lane 10",
+      "type": "Industrial",
+      "location": "Singapore",
+      "status": "Active",
+      "size": "9,687 sqm (104,265 sf)",
+      "price": "S$51.5M all-in",
+      "yield": "6.4% entry / 7.0% exit",
+      "description": "Brand new food industrial SLB with 10-year NNN lease to Paradise Group (160+ outlet F&B operator)",
+      "keyFeatures": [
+        "10-year absolute net lease",
+        "1.5% annual escalation",
+        "Strong tenant covenant - Paradise Group",
+        "Brand new facility (2026)",
+        "JTC leasehold"
+      ],
+      "targetInvestorProfile": {
+        "sectors": ["Industrial", "Food Production"],
+        "geography": ["Singapore", "APAC"],
+        "minTicket": "S$50M",
+        "investorTypes": ["Family Office", "Investment Manager", "REIT"]
+      },
+      "sharedWith": [],
+      "interestedInvestors": [],
+      "notes": "EOI deadline 25 Mar 2026. ~10% levered IRR. Agent: CBRE Singapore (Victoria Wang). Comp: CLAR acquired 3 assets at same 6.4% yield Oct 2025.",
+      "createdAt": "2026-03-11",
+      "updatedAt": "2026-03-11"
+    },
+    {
       "id": "d001",
       "name": "Seoul Office",
       "type": "Office",
