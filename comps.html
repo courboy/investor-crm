@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sydney Industrial Comps | Evo Lake</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a5f 0%, #0f1f33 100%); }
+        .card { background: white; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .stat-card { transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-2px); }
+        .table-row:hover { background: #f8fafc; }
+        .filter-active { background: #1e3a5f !important; color: white !important; }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            .chart-container { height: 250px !important; }
+            table { font-size: 0.7rem; }
+            th, td { padding: 0.5rem 0.25rem !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <a href="index.html" class="text-white/60 hover:text-white text-sm">← Back to CRM</a>
+                    </div>
+                    <h1 class="text-2xl md:text-3xl font-bold">Sydney Industrial Market Comps</h1>
+                    <p class="text-white/70 mt-1">Key transactions Jan 2025 – Jan 2026 | Source: JLL Capital Markets</p>
+                </div>
+                <div class="hidden md:block text-right">
+                    <p class="text-3xl font-bold">A$2.08B</p>
+                    <p class="text-white/70 text-sm">Total Transaction Volume</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Summary Stats -->
+    <div class="max-w-7xl mx-auto px-4 -mt-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 stats-grid">
+            <div class="card p-4 stat-card">
+                <p class="text-2xl font-bold text-gray-900">25</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">Transactions</p>
+            </div>
+            <div class="card p-4 stat-card">
+                <p class="text-2xl font-bold text-[#1e3a5f]">4.6%</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">Avg Initial Yield</p>
+            </div>
+            <div class="card p-4 stat-card">
+                <p class="text-2xl font-bold text-[#1e3a5f]">5.4%</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">Avg Exit Yield</p>
+            </div>
+            <div class="card p-4 stat-card">
+                <p class="text-2xl font-bold text-green-600">7.3%</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">Avg IRR</p>
+            </div>
+            <div class="card p-4 stat-card">
+                <p class="text-2xl font-bold text-gray-900">$4,324</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">Avg $/sqm GLA</p>
+            </div>
+            <div class="card p-4 stat-card">
+                <p class="text-2xl font-bold text-gray-900">$2,106</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wide">Avg $/sqm Site</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Insights -->
+    <div class="max-w-7xl mx-auto px-4 mt-8">
+        <div class="card p-6">
+            <h2 class="text-lg font-bold text-gray-900 mb-4">📊 Key Market Insights</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border-l-4 border-[#1e3a5f] pl-4">
+                    <h3 class="font-semibold text-gray-900">Yield Compression Continues</h3>
+                    <p class="text-sm text-gray-600 mt-1">Initial yields averaging 4.6% across the market, with prime infill assets trading at 2.7-3.6%. Outer markets offering 100-150bps premium at 4.5-5.7%.</p>
+                </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                    <h3 class="font-semibold text-gray-900">Offshore Capital Dominant</h3>
+                    <p class="text-sm text-gray-600 mt-1">Offshore direct buyers (KKR, Blackstone, LaSalle) and offshore-backed funds (OTPP, PGIM, BGO) account for 60%+ of transaction volume by value.</p>
+                </div>
+                <div class="border-l-4 border-amber-500 pl-4">
+                    <h3 class="font-semibold text-gray-900">Development Land Premium</h3>
+                    <p class="text-sm text-gray-600 mt-1">Development sites trading at $296-$1,375/sqm — Badgerys Creek (airport precinct) at $296/sqm represents strategic positioning for future logistics demand.</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                    <h3 class="font-semibold text-gray-900">Infill vs Outer Spread</h3>
+                    <p class="text-sm text-gray-600 mt-1">Infill assets command ~40% premium on $/sqm GLA ($5,200 vs $3,200) but yields ~80bps tighter. Best risk-adjusted returns in Outer markets with strong tenant covenants.</p>
+                </div>
+                <div class="border-l-4 border-red-500 pl-4">
+                    <h3 class="font-semibold text-gray-900">REITs Recycling Capital</h3>
+                    <p class="text-sm text-gray-600 mt-1">Goodman, Stockland, Dexus actively divesting to institutional buyers — clearing mature assets to fund development pipelines. Buying opportunity for value-add investors.</p>
+                </div>
+                <div class="border-l-4 border-blue-500 pl-4">
+                    <h3 class="font-semibold text-gray-900">WALE Sweet Spot: 3-5 Years</h3>
+                    <p class="text-sm text-gray-600 mt-1">Longest WALEs (20+ years) trade at tightest yields but limit upside. Mid-term WALEs (3-5 years) offer reversion potential with manageable lease-up risk.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Filter -->
+    <div class="max-w-7xl mx-auto px-4 mt-8">
+        <div class="card p-4">
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterTable('all')" class="filter-btn filter-active px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">All Locations</button>
+                <button onclick="filterTable('Infill')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Infill</button>
+                <button onclick="filterTable('Outer')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Outer</button>
+                <button onclick="filterTable('Outer Central West')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Outer Central West</button>
+                <button onclick="filterTable('Outer South West')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Outer South West</button>
+                <button onclick="filterTable('Outer North West')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">Outer North West</button>
+                <button onclick="filterTable('South')" class="filter-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 text-gray-700 hover:bg-gray-200 transition">South</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="max-w-7xl mx-auto px-4 mt-6">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card p-6">
+                <h3 class="font-bold text-gray-900 mb-4">Transaction Volume by Submarket</h3>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="submarketChart"></canvas>
+                </div>
+            </div>
+            <div class="card p-6">
+                <h3 class="font-bold text-gray-900 mb-4">Buyer Profile Mix</h3>
+                <div class="chart-container" style="height: 300px;">
+                    <canvas id="buyerChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Table -->
+    <div class="max-w-7xl mx-auto px-4 mt-8 mb-12">
+        <div class="card overflow-hidden">
+            <div class="p-4 border-b border-gray-100">
+                <h3 class="font-bold text-gray-900">All Transactions</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm" id="transactions-table">
+                    <thead class="bg-gray-50 text-left">
+                        <tr>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Address</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Suburb</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Submarket</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Type</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Date</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600 text-right">Price (A$M)</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600 text-right">GLA (sqm)</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600 text-right">WALE</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600 text-right">IY%</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600 text-right">EY%</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600 text-right">$/sqm</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Vendor</th>
+                            <th class="px-4 py-3 font-semibold text-gray-600">Purchaser</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400 text-sm">Data source: JLL Capital Markets Australia | Last updated: March 2026</p>
+            <p class="text-gray-500 text-xs mt-2">Confidential — For investor discussion purposes only</p>
+        </div>
+    </footer>
+
+    <script>
+        // Transaction data from JLL
+        const transactions = [
+            { address: "63 Jedda Road", suburb: "Prestons", submarket: "Outer South West", type: "Outer", date: "Jan 2026", price: 108, gla: 22492, wale: 9.67, iy: 4.63, ey: 5.13, irr: 6.86, psmGla: 4802, vendor: "Blackstone", vendorType: "Offshore Direct", purchaser: "Aliro", purchaserType: "Investment Manager", capital: "Nuveen" },
+            { address: "317-321 Woodpark Road", suburb: "Smithfield", submarket: "Outer Central West", type: "Infill", date: "Dec 2025", price: 70, gla: 15032, wale: 1.6, iy: 5.27, ey: 5.38, irr: 7.36, psmGla: 4657, vendor: "Goodman Group", vendorType: "REIT", purchaser: "Barings", purchaserType: "Investment Manager", capital: "Brava Fund V" },
+            { address: "364-384 Woodpark Road", suburb: "Smithfield", submarket: "Outer Central West", type: "Infill", date: "Dec 2025", price: 75, gla: 16951, wale: 1.62, iy: 4.74, ey: 5.55, irr: 7.22, psmGla: 4425, vendor: "Goodman Group", vendorType: "REIT", purchaser: "Barings", purchaserType: "Investment Manager", capital: "Brava Fund V" },
+            { address: "2A Mavis Street", suburb: "Revesby", submarket: "Outer South West", type: "Infill", date: "Nov 2025", price: 50, gla: 7618, wale: 4.5, iy: 2.78, ey: 5.49, irr: 6.93, psmGla: 6563, vendor: "SB Investments", vendorType: "Private", purchaser: "Realterm", purchaserType: "Investment Manager", capital: "Partners Group" },
+            { address: "91 Kurrajong Avenue", suburb: "Mt Druitt", submarket: "Outer North West", type: "Outer", date: "Nov 2025", price: 50, gla: 18224, wale: 3.0, iy: 4.98, ey: 6.40, irr: 7.41, psmGla: 2744, vendor: "Gibb Group", vendorType: "Investment Manager", purchaser: "LaSalle", purchaserType: "Offshore Direct", capital: "Hillhouse" },
+            { address: "32 Sargents Road (Perfect Pair)", suburb: "Minchinbury", submarket: "Outer North West", type: "Outer", date: "Oct 2025", price: 77.5, gla: 20059, wale: 1.17, iy: 3.57, ey: 5.31, irr: 8.78, psmGla: 3864, vendor: "Dexus", vendorType: "REIT", purchaser: "Busways", purchaserType: "Private", capital: "Private" },
+            { address: "49 Fitzroy Street", suburb: "Marrickville", submarket: "South", type: "Infill", date: "Sep 2025", price: 58, gla: 6327, wale: 2.73, iy: 2.72, ey: 4.46, irr: 6.50, psmGla: 9167, vendor: "Highland Property", vendorType: "Syndicator", purchaser: "Pallion", purchaserType: "Corporate", capital: "Corporate" },
+            { address: "260B Captain Cook Drive", suburb: "Kurnell", submarket: "South", type: "Infill", date: "Sep 2025", price: 65, gla: 0, wale: "Dev", iy: "N/A", ey: "N/A", irr: "N/A", psmGla: 593, vendor: "Procent Pty Ltd", vendorType: "Private", purchaser: "Centennial", purchaserType: "Investment Manager", capital: "MaxCap" },
+            { address: "31-33A Davis Road", suburb: "Wetherill Park", submarket: "Outer Central West", type: "Infill", date: "Aug 2025", price: 73, gla: 17065, wale: 4.72, iy: 5.45, ey: 5.10, irr: 6.71, psmGla: 4278, vendor: "ESR", vendorType: "Investment Manager", purchaser: "New Food Coatings", purchaserType: "Corporate", capital: "Corporate" },
+            { address: "235 Martin Road", suburb: "Badgerys Creek", submarket: "Outer Central West", type: "Outer", date: "Aug 2025", price: 575, gla: 0, wale: "Dev", iy: "N/A", ey: "N/A", irr: "N/A", psmGla: 296, vendor: "CSR", vendorType: "Corporate", purchaser: "Goodman Group", purchaserType: "REIT", capital: "Undisclosed" },
+            { address: "149 Orchard Road", suburb: "Chester Hill", submarket: "Outer Central West", type: "Infill", date: "Jul 2025", price: 121.5, gla: 24050, wale: "VP", iy: "VP", ey: 5.09, irr: 6.73, psmGla: 5052, vendor: "Dexus", vendorType: "REIT", purchaser: "Link REIT", purchaserType: "Offshore Direct", capital: "Link REIT" },
+            { address: "2-4 Park Road, Metro Estate", suburb: "Rydalmere", submarket: "Inner West", type: "Infill", date: "Jul 2025", price: 152.1, gla: 40045, wale: 2.7, iy: 5.29, ey: 6.25, irr: 9.85, psmGla: 3798, vendor: "Dexus", vendorType: "REIT", purchaser: "Wentworth Capital", purchaserType: "Investment Manager", capital: "BlackRock" },
+            { address: "89 Quarry Road (Eastern Edge)", suburb: "Erskine Park", submarket: "Outer Central West", type: "Outer", date: "Jun 2025", price: 40.7, gla: 11724, wale: 2.17, iy: 4.54, ey: 5.68, irr: 9.12, psmGla: 3472, vendor: "Stockland", vendorType: "REIT", purchaser: "Cadence Property", purchaserType: "Investment Manager", capital: "VFMC" },
+            { address: "28 Britton Street (Centuria/BGO)", suburb: "Smithfield", submarket: "Outer Central West", type: "Infill", date: "May 2025", price: 54, gla: 12937, wale: "VP", iy: "VP", ey: 5.00, irr: 6.85, psmGla: 4174, vendor: "Goodman Group", vendorType: "REIT", purchaser: "Centuria", purchaserType: "REIT", capital: "BGO" },
+            { address: "45 Britton Street (Centuria/BGO)", suburb: "Smithfield", submarket: "Outer Central West", type: "Infill", date: "May 2025", price: 72, gla: 17074, wale: 6.31, iy: 4.87, ey: 5.09, irr: 6.89, psmGla: 4217, vendor: "Goodman Group", vendorType: "REIT", purchaser: "Centuria", purchaserType: "REIT", capital: "BGO" },
+            { address: "12 Kangaroo Avenue", suburb: "Eastern Creek", submarket: "Outer Central West", type: "Outer", date: "May 2025", price: 75, gla: 20500, wale: 4.57, iy: 3.49, ey: 5.59, irr: 7.09, psmGla: 3659, vendor: "Blackstone", vendorType: "Offshore Direct", purchaser: "Gateway Capital", purchaserType: "Investment Manager", capital: "OTPP/KIC" },
+            { address: "17 Stanton Road (Centuria/BGO)", suburb: "Seven Hills", submarket: "Outer North West", type: "Infill", date: "May 2025", price: 75, gla: 15827, wale: 2.43, iy: 4.56, ey: 5.31, irr: 7.13, psmGla: 4739, vendor: "Goodman Group", vendorType: "REIT", purchaser: "Centuria", purchaserType: "REIT", capital: "BGO" },
+            { address: "2 Forrester Road (Intermodal)", suburb: "St Marys", submarket: "Outer North West", type: "Outer", date: "May 2025", price: 145, gla: 95940, wale: 20.0, iy: 5.70, ey: 5.70, irr: 6.75, psmGla: 1511, vendor: "Pacific National", vendorType: "Corporate", purchaser: "Cadence Property", purchaserType: "Investment Manager", capital: "PGIM" },
+            { address: "17 Jumal Place", suburb: "Smithfield", submarket: "Outer Central West", type: "Infill", date: "Apr 2025", price: 52.9, gla: 13444, wale: 0.1, iy: 0.97, ey: 5.73, irr: "N/A", psmGla: 3935, vendor: "Centennial", vendorType: "Investment Manager", purchaser: "Livingstone Group", purchaserType: "Private", capital: "Private" },
+            { address: "91 Airds Road", suburb: "Minto", submarket: "Outer South West", type: "Outer", date: "Mar 2025", price: 51, gla: 13660, wale: "VP", iy: "VP", ey: 5.50, irr: 8.28, psmGla: 3734, vendor: "Volvo Group", vendorType: "Corporate", purchaser: "Cabot Properties", purchaserType: "Offshore Direct", capital: "Cabot" },
+            { address: "53-65 Mandoon Road", suburb: "Girraween", submarket: "Outer Central West", type: "Infill", date: "Feb 2025", price: 103.5, gla: 19669, wale: 25.0, iy: 5.68, ey: 5.68, irr: 7.75, psmGla: 5262, vendor: "R.Cordina & Son", vendorType: "Corporate", purchaser: "RF CorVal", purchaserType: "Syndicator", capital: "Private" },
+            { address: "23 Wonderland Drive", suburb: "Eastern Creek", submarket: "Outer Central West", type: "Outer", date: "Jan 2025", price: 54, gla: 23117, wale: 1.58, iy: 3.97, ey: 5.54, irr: 7.00, psmGla: 3331, vendor: "Stockland", vendorType: "REIT", purchaser: "KKR", purchaserType: "Offshore Direct", capital: "KKR" },
+            { address: "2-8 Baker Street", suburb: "Banksmeadow", submarket: "South", type: "Infill", date: "Jan 2025", price: 90.6, gla: 14431, wale: 4.84, iy: 3.61, ey: 4.76, irr: 6.98, psmGla: 8953, vendor: "Stockland", vendorType: "REIT", purchaser: "KKR", purchaserType: "Offshore Direct", capital: "KKR" },
+            { address: "250 Victoria Street", suburb: "Wetherill Park", submarket: "Outer Central West", type: "Infill", date: "Jan 2025", price: 118.5, gla: 0, wale: "Dev", iy: "N/A", ey: "N/A", irr: "N/A", psmGla: 1375, vendor: "Woolworths", vendorType: "Corporate", purchaser: "Hale Capital", purchaserType: "Investment Manager", capital: "Oxford/Warburg" },
+            { address: "345 Bringelly Road", suburb: "Leppington", submarket: "Outer Central West", type: "Outer", date: "Jan 2025", price: 127, gla: 57227, wale: 4.67, iy: 4.68, ey: 5.75, irr: 7.15, psmGla: 3165, vendor: "Stockland", vendorType: "REIT", purchaser: "KKR", purchaserType: "Offshore Direct", capital: "KKR" }
+        ];
+
+        // Render table
+        function renderTable(data) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = data.map(t => `
+                <tr class="table-row border-b border-gray-100" data-type="${t.type}" data-submarket="${t.submarket}">
+                    <td class="px-4 py-3 font-medium text-gray-900">${t.address}</td>
+                    <td class="px-4 py-3 text-gray-600">${t.suburb}</td>
+                    <td class="px-4 py-3 text-gray-600">${t.submarket}</td>
+                    <td class="px-4 py-3"><span class="px-2 py-1 rounded-full text-xs font-medium ${t.type === 'Infill' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'}">${t.type}</span></td>
+                    <td class="px-4 py-3 text-gray-600">${t.date}</td>
+                    <td class="px-4 py-3 text-right font-semibold text-gray-900">$${t.price.toFixed(1)}M</td>
+                    <td class="px-4 py-3 text-right text-gray-600">${t.gla > 0 ? t.gla.toLocaleString() : '-'}</td>
+                    <td class="px-4 py-3 text-right text-gray-600">${typeof t.wale === 'number' ? t.wale.toFixed(1) : t.wale}</td>
+                    <td class="px-4 py-3 text-right text-gray-600">${typeof t.iy === 'number' ? t.iy.toFixed(2) + '%' : t.iy}</td>
+                    <td class="px-4 py-3 text-right text-gray-600">${typeof t.ey === 'number' ? t.ey.toFixed(2) + '%' : t.ey}</td>
+                    <td class="px-4 py-3 text-right text-gray-600">$${t.psmGla.toLocaleString()}</td>
+                    <td class="px-4 py-3 text-gray-600">${t.vendor}</td>
+                    <td class="px-4 py-3 text-gray-600">${t.purchaser}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Filter
+        function filterTable(filter) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('filter-active'));
+            event.target.classList.add('filter-active');
+            
+            let filtered = transactions;
+            if (filter !== 'all') {
+                filtered = transactions.filter(t => t.type === filter || t.submarket === filter);
+            }
+            renderTable(filtered);
+        }
+
+        // Charts
+        function initCharts() {
+            // Submarket volume chart
+            const submarketData = {};
+            transactions.forEach(t => {
+                submarketData[t.submarket] = (submarketData[t.submarket] || 0) + t.price;
+            });
+            
+            new Chart(document.getElementById('submarketChart'), {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(submarketData),
+                    datasets: [{
+                        label: 'Volume (A$M)',
+                        data: Object.values(submarketData),
+                        backgroundColor: ['#1e3a5f', '#2d4a6f', '#3d5a7f', '#4d6a8f', '#5d7a9f', '#6d8aaf'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, title: { display: true, text: 'Volume (A$M)' } } }
+                }
+            });
+
+            // Buyer profile chart
+            const buyerData = {};
+            transactions.forEach(t => {
+                buyerData[t.purchaserType] = (buyerData[t.purchaserType] || 0) + t.price;
+            });
+            
+            new Chart(document.getElementById('buyerChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(buyerData),
+                    datasets: [{
+                        data: Object.values(buyerData),
+                        backgroundColor: ['#1e3a5f', '#3d5a7f', '#5d7a9f', '#7d9abf', '#9dbad0', '#bddae0']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'right' } }
+                }
+            });
+        }
+
+        // Init
+        renderTable(transactions);
+        initCharts();
+    </script>
+</body>
+</html>
