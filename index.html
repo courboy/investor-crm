@@ -204,10 +204,15 @@
             <div id="view-contacts" class="tab-content hidden">
                 <div class="bg-white  border border-gray-200">
                     <div class="p-4 border-b border-gray-200 flex items-center justify-between">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-4 flex-wrap">
                             <input type="text" id="contact-search" placeholder="Search contacts..." class="border border-gray-300  px-4 py-2 text-sm w-64" oninput="filterContacts()">
                             <select id="contact-type-filter" class="border border-gray-300  px-4 py-2 text-sm" onchange="filterContacts()">
                                 <option value="">All Types</option>
+                            </select>
+                            <select id="contact-origin-filter" class="border border-gray-300  px-4 py-2 text-sm" onchange="filterContacts()">
+                                <option value="">All Sources</option>
+                                <option value="original">📋 Original (Adam's)</option>
+                                <option value="scraped">🤖 Scraped (Howard's)</option>
                             </select>
                         </div>
                         <div class="text-sm text-gray-500"><span id="contacts-showing">0</span> contacts</div>
@@ -664,7 +669,13 @@
                         <td class="px-4 py-3">
                             <div class="flex items-center gap-3">
                                 <div class="w-8 h-8 rounded-full bg-[#003366] flex items-center justify-center text-white text-sm font-medium">${c.name.charAt(0)}</div>
-                                <div><p class="font-medium text-gray-900">${c.name}</p><p class="text-xs text-gray-500">${c.title || ''}</p></div>
+                                <div>
+                                    <p class="font-medium text-gray-900 flex items-center gap-2">
+                                        ${c.name}
+                                        ${c.created_at && new Date(c.created_at) >= new Date('2026-03-19T00:00:00Z') ? '<span class="text-[10px] px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded">SCRAPED</span>' : ''}
+                                    </p>
+                                    <p class="text-xs text-gray-500">${c.title || ''}</p>
+                                </div>
                             </div>
                         </td>
                         <td class="px-4 py-3 text-sm text-gray-600">${c.company || '-'}</td>
@@ -685,10 +696,22 @@
         function getFilteredContacts() {
             const search = document.getElementById('contact-search').value.toLowerCase();
             const type = document.getElementById('contact-type-filter').value;
+            const origin = document.getElementById('contact-origin-filter')?.value || '';
+            const scrapeCutoff = new Date('2026-03-19T00:00:00Z');
+            
             return contacts.filter(c => {
                 const matchesSearch = !search || c.name.toLowerCase().includes(search) || (c.company && c.company.toLowerCase().includes(search));
                 const matchesType = !type || c.type === type;
-                return matchesSearch && matchesType;
+                
+                // Origin filter: original = before Mar 19, scraped = on or after Mar 19
+                let matchesOrigin = true;
+                if (origin === 'original') {
+                    matchesOrigin = c.created_at && new Date(c.created_at) < scrapeCutoff;
+                } else if (origin === 'scraped') {
+                    matchesOrigin = c.created_at && new Date(c.created_at) >= scrapeCutoff;
+                }
+                
+                return matchesSearch && matchesType && matchesOrigin;
             });
         }
 
